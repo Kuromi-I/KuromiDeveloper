@@ -1,0 +1,324 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    border: none;
+    outline: none;
+}
+ html, body {
+    min-height: 100dvh;
+    background: #200a3f;
+    padding-top: 70px;
+    scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+.navigation {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border: #e8d9f0 1px solid;
+    width: 700px;
+    height: 70px;
+    background: linear-gradient(45deg, #180d26, #5c12b7);
+    border-radius: 0 0 50px 50px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding: 0 20px;
+    z-index: 10;
+}
+.navigation::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px) brightness(1.2);
+    -webkit-backdrop-filter: blur(10px) brightness(1.2); /* Safari */
+    z-index: -1;
+}
+
+.navigation .logo {
+    color: #f7f7f7;
+    flex: 50px;
+    text-align: center;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    height: 60px;
+    font-size: 1.5em;
+    padding: 0 20px;
+    white-space: nowrap;
+    transition: 0.5s;
+    border: 1px solid #a267f6;
+    border-radius: 10px;
+    border-left: 0.5px;
+    border-bottom: 0.5px;
+    border-top: 0.5px;
+}
+.navigation .list {
+    flex: none;
+    display: flex;
+    position: relative;
+    height: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.navigation a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 90px;
+    margin: 0 5px;
+    padding: 0 10px;
+    text-decoration: none;
+}
+.navigation .list a .icon {
+    font-size: 1.5em;
+    color: #f7f7f7;
+    transition: 0.2s;
+}
+
+.navigation a:hover .icon {
+    color: rgb(196, 107, 244);
+    transform: translateY(-10px);
+}
+
+.navigation .list a .text {
+    color: #f7f7f7;
+    font-weight: 400;
+    font-size: 0.75em;
+    letter-spacing: 0.05em;
+    transition: all 0.4s;
+    opacity: 0;
+    transform: translateY(10px);
+
+}
+
+.navigation a:hover .text {
+    opacity: 1;
+    color: rgb(235, 199, 255);
+    transform: translateY(-10px);
+    text-shadow: #ffffff 0px 0px 10px;
+    
+}
+
+@media screen and (max-width: 768px) {
+    .navigation {
+        flex-direction: column;
+        height: auto;
+        padding: 0;
+        border-radius: 0 0 30px 30px;
+    }
+
+    .navigation .logo {
+        cursor: pointer;
+       height: 70px;
+        width: 100%; 
+        font-size: 1.5em;
+        margin-bottom: 10px;
+    }
+
+.navigation .list {
+    visibility: hidden;
+    opacity: 0;
+    max-height: 0;
+    transition: max-height 1s ease-in-out, opacity 0.6s ease-in-out, visibility 0s linear 0.6s;
+}
+
+.navigation:hover .list {
+    visibility: visible;
+    max-height: 300px;
+    opacity: 1;
+    transition-delay: 0s;
+}
+.navigation .list a {
+    flex-direction: row;
+    gap: 5px;
+    height: auto;
+    padding: 8px 12px;
+}
+.navigation .list a .text {
+    opacity: 1;
+    transform: translateY(-2px);
+    pointer-events: auto;
+}
+.navigation a:hover .text {
+    transform: translateY(-10px);
+    text-decoration-line: overline;
+}
+}
+
+/* section */
+@supports (animation-timeline: scroll()) {
+  @keyframes fadeOutOnScroll {
+    from {
+      opacity: 1;
+      transform: scale(1);
+    }
+    to {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+  }
+
+  #home {
+    animation: fadeOutOnScroll linear;
+    animation-timeline: scroll();
+    animation-range: exit 0% exit 100%;
+    will-change: opacity, transform;
+    pointer-events: auto; /* Garantir que continue rastreando */
+  }
+}
+
+#home{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #e8d9f0;
+    z-index: 10;
+    text-align: center;
+    pointer-events: none;
+    
+}
+
+#home h1{
+    font-size: 2em;
+    margin: 0;
+    padding: 0;
+    color: #e9e6eb;
+    text-shadow: #9e3869 0px 10px 10px;
+}
+.home-img::before {
+    content: "";
+    position: absolute;
+    top: 0; 
+    left: 0;
+    width: 100%;
+    height: 100dvh;
+    background-image: url('../img/morte.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.2;
+    z-index: 0;
+    filter: blur(5px);
+}
+.home-content {
+    position: relative;
+    z-index: 1;
+}
+.social-icons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    z-index: 10;
+    pointer-events: auto;
+}
+.social-icons a {
+    display: inline-block;
+    margin: 0 5px;
+    color: #e8d9f0;
+    font-size: 20px;
+    transition: color 0.3s ease-in-out;
+}
+.social-icons a:hover {
+    color: #cb2877;
+}
+
+#port{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #e8d9f0;
+    text-align: center;
+    border: solid 1px #e8d9f0;
+    border-radius: 10px;
+}
+#port h1{
+    font-size: 2em;
+    margin: 0;
+    padding: 0;
+    color: #e8d9f0;
+    text-shadow: #9e3869 0px 10px 10px;
+}
+
+#about{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #e8d9f0;
+    text-align: center;
+    border: solid 1px #e8d9f0;
+    border-radius: 10px;
+}
+#about h1{
+    font-size: 2em;
+    margin: 0;
+    padding: 0;
+    color: #e8d9f0;
+    text-shadow: #9e3869 0px 10px 10px;
+}
+
+#skills{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #e8d9f0;
+    text-align: center;
+    border: solid 1px #e8d9f0;
+    border-radius: 10px;
+}
+#skills h1{
+    font-size: 2em;
+    margin: 0;
+    padding: 0;
+    color: #e8d9f0;
+    text-shadow: #9e3869 0px 10px 10px;
+}
+
+#contact{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #e8d9f0;
+    text-align: center;
+    border: solid 1px #e8d9f0;
+    border-radius: 10px;
+}
+#contact h1{
+    font-size: 2em;
+    margin: 0;
+    padding: 0;
+    color: #e8d9f0;
+    text-shadow: #9e3869 0px 10px 10px;
+}

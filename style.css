@@ -167,20 +167,19 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    color: #e8d9f0;
     text-align: center;
     pointer-events: none;    
     opacity: 0.9;
 }
 
-#home h1{
+h1{
     font-size: 2em;
     margin: 0;
     padding: 0;
     color: #c41e2c;
-    text-shadow: #9e3869 0px 10px 10px;
+    text-shadow: #e9e6eb 0px 10px 10px;
 }
-#home h3{
+h3{
     font-size: 1.5em;
     margin: 0;
     padding: 0;

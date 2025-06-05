@@ -171,20 +171,19 @@
     pointer-events: none;    
     opacity: 0.9;
 }
-
 h1{
     font-size: 2em;
     margin: 0;
     padding: 0;
-    color: #c41e2c;
-    text-shadow: #9e3869 0px 10px 10px;
+    color: #f889d3;
+    text-shadow: #1a1317 0px 10px 10px;
 }
 h3{
     font-size: 1.5em;
     margin: 0;
     padding: 0;
     color: #e9e6eb;
-    text-shadow: #9e3869 0px 10px 10px;
+    text-shadow: #1a1317 0px 10px 10px;
 }
 .home-img::before {
     content: "";

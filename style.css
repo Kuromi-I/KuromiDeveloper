@@ -11,8 +11,9 @@
     background: #050309;
     padding-top: 70px;
     margin: 0;
-    padding: 35px 0;
+    padding: 20px 0 0;
     overflow-x: hidden;
+    background-image: linear-gradient(147deg, #000000 0%, #2c3e50 74%);
 }
 body, a {
     cursor: url(https://cur.cursors-4u.net/anime/ani-1/ani197.ani), url(https://cur.cursors-4u.net/anime/ani-1/ani197.png), auto;
@@ -155,7 +156,6 @@ h3{
     background-size: cover;
     background-position: center;
     z-index: 0;
-    border-radius: 50px;
 }
 .home-content {
     position: relative;
@@ -187,7 +187,7 @@ h3{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    color: #e8d9f0;
+    color: #faecff;
     text-align: center;
     border: solid 1px #e8d9f0;
     border-radius: 10px;
@@ -201,7 +201,7 @@ h3{
     font-size: 2em;
     margin: 0;
     padding: 0;
-    color: #e8d9f0;
+    color: #eae6ec;
     text-shadow: #9e3869 0px 10px 10px;
 }
 
@@ -287,35 +287,35 @@ h3{
         view-timeline-name: --fade-in;
         view-timeline-axis: vertical;
         animation: slide-fade-in 1s ease-in forwards;
-        filter: brightness(70%);
+        filter: brightness(90%);
     }
     .social-icons {
         view-timeline-name: --fade-in;
         view-timeline-axis: vertical;
         animation: slide-fade-in 1s ease-in forwards;
     }
-    .line{
-        view-timeline-name: --fade-in;
-        view-timeline-axis: vertical;
-        animation: slide-fade-in 1s ease-in forwards;
-        filter: brightness(70%);
-    }
-
 }
 
 /* Estilo do botão ☰ */
 .menu-toggle {
   display: none;
-  font-size: 2em;
+  font-size: 1.5em;
   padding: 10px;
   cursor: pointer;
   position: fixed;
-  top: 10px;
-  right: 15px;
+  top: 0;
+  right: 0;
   z-index: 1001;
-  background: #483262;
+  background: linear-gradient(45deg, #681754, #221530); 
+  filter: saturate(90%);
   color: #fff;
-  border-radius: 8px;
+  border-radius: 8px 0 0 8px;
+  transition: 0.3s;
+}
+.menu-toggle:hover{
+    color: #9e3869;
+    transform: scale(1.1);
+    transition: 0.2s;
 }
 
 /* Oculta o menu */
@@ -344,14 +344,33 @@ h3{
   .hidden {
     display: none;
   }
-  .menu{
+ .menu.show {
+    display: flex;
+    flex-direction: column;
+    animation: slide-in 0.3s ease-in forwards;
+ }
+}
+.menu {
+    display: none;
+}
+ .menu-content .texto{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 0.9em;
+    gap: 20px;
+    color: #000000;
+  }
+ .menu{
     width: 80px;
     height: 300px;
     border-radius: 35px 0 35px 35px;
     box-shadow: #9e3869 0px 10px 10px;
     position: fixed;  
-    top: 10px;
-    right: 70px;
+    top: 0;
+    right: 50px;
     text-align: center;
     justify-content: center;
     align-items: center;
@@ -370,20 +389,39 @@ h3{
       transform: translateX(0);
     }
   }
-  .menu-content .texto{
+  .menu-content {
+    width: 100%;
+    height: 95%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    width: 100%;
-    height: 100%;
-    font-size: 0.9em;
-    gap: 20px;
-    color: #000000;
+    gap: 5px;
   }
-
-
-}
-
-
+  .menu-content a .icone{
+    display: block;
+    position: relative;
+    line-height: 50px;
+    text-align: center;
+    font-size: 1.5em;
+    color: #000000;
+    transition: 0.3s;
+  }
+  .menu-content a .icone:hover{
+    color: #9e3869;
+    transform: scale(1.3);
+    transition: 0.2s;
+  }
+  .menu-content a .texto {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%);
+    padding: 5px 10px;
+    background: white;
+    transition: 0.5s;
+    box-shadow: 0 5 15 rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    visibility: hidden;
+  }

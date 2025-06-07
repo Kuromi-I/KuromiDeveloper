@@ -8,7 +8,6 @@
 }
  html, body {
     min-height: 100dvh;
-    background: #050309;
     padding-top: 70px;
     margin: 0;
     padding: 20px 0 0;
@@ -192,11 +191,11 @@ h3{
     text-align: center;
     border: solid 1px #e8d9f0;
     border-radius: 10px;
-    background-image: url('../img/morte.png');
     width: 100%;
     height: 100vh;
     background-size: cover;
     background-position: center
+
 }
 #port h1{
     font-size: 2em;
@@ -279,22 +278,22 @@ h3{
     }
 }
 @media (prefers-reduced-motion: reduce) {
-    .home-content {
-        view-timeline-name: --fade-in;
-        view-timeline-axis: vertical;
-        animation: slide-fade-in 1s ease-in forwards;
-    }
-    .home-img::before {
-        view-timeline-name: --fade-in;
-        view-timeline-axis: vertical;
-        animation: slide-fade-in 1s ease-in forwards;
-        filter: brightness(90%);
-    }
-    .social-icons {
-        view-timeline-name: --fade-in;
-        view-timeline-axis: vertical;
-        animation: slide-fade-in 1s ease-in forwards;
-    }
+.home-content {
+    view-timeline-name: --fade-in;
+    view-timeline-axis: vertical;
+    animation: slide-fade-in 1s ease-in forwards;
+}
+.home-img::before {
+    view-timeline-name: --fade-in;
+    view-timeline-axis: vertical;
+    animation: slide-fade-in 1s ease-in forwards;
+    filter: brightness(90%);
+}
+.social-icons {
+    view-timeline-name: --fade-in;
+    view-timeline-axis: vertical;
+    animation: slide-fade-in 1s ease-in forwards;
+}
 }
 
 /* Estilo do botão ☰ */
@@ -307,17 +306,18 @@ h3{
   top: 0;
   right: 0;
   z-index: 1001;
-  background: linear-gradient(45deg, #681754, #221530); 
-  filter: saturate(90%);
+  background: linear-gradient(45deg, #8b2658, #06010b); 
+  filter: saturate(90%) brightness(110%);
   color: #fff;
   border-radius: 8px 0 0 8px;
   transition: 0.3s;
   cursor: url(https://cur.cursors-4u.net/anime/ani-1/ani197.ani), url(https://cur.cursors-4u.net/anime/ani-1/ani197.png), auto;
+  box-shadow: #0f0f0f 0px 5px 5px;
 }
 .menu-toggle:hover{
-    color: #9e3869;
     transform: scale(1.1);
     transition: 0.2s;
+    opacity: 0.9;
 }
 
 /* Oculta o menu */
@@ -342,6 +342,7 @@ h3{
   .show {
     display: flex;
     flex-direction: column;
+    
   }
   .hidden {
     display: none;
@@ -352,10 +353,11 @@ h3{
     animation: slide-in 0.3s ease-in forwards;
  }
 }
+
 .menu {
     display: none;
 }
- .menu-content .texto{
+.menu-content .texto{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -364,34 +366,55 @@ h3{
     font-size: 0.9em;
     gap: 20px;
     color: #000000;
-  }
- .menu{
-    width: 80px;
-    height: 300px;
-    border-radius: 35px 0 35px 35px;
+}
+.menu{
+    opacity: 0;
+    width: 70px;
+    height: 270px;
+    border-radius: 35px 0 35px 30px;
     box-shadow: #9e3869 0px 10px 10px;
     position: fixed;  
     top: 0;
-    right: 50px;
+    right: 42px;
     text-align: center;
     justify-content: center;
     align-items: center;
-    background-color: #fefcfc;
+    background-color: #0e0d0d;
     z-index: 1000;
     overflow: hidden;
-    animation: slide-in 0.3s ease-in forwards;
+    transition: opacity 0.3s ease;
+}
+@keyframes fadeInMenu {
+  from {
+    opacity: 0;
+    transform: translateX(50%);
   }
-  @keyframes slide-in {
-    from {
-        opacity: 0;
-      transform: translateX(50%);
-    }
-    to {
-        opacity: 1;
-      transform: translateX(0);
-    }
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
-  .menu-content {
+}
+
+@keyframes fadeOutMenu {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(50%);
+  }
+}
+.menu.fade-in {
+  display: flex;
+  animation: fadeInMenu 0.3s ease forwards;
+}
+
+.menu.fade-out {
+  animation: fadeOutMenu 0.3s ease forwards;
+}
+
+.menu-content {
     width: 100%;
     height: 95%;
     display: flex;
@@ -399,23 +422,46 @@ h3{
     justify-content: center;
     align-items: center;
     text-align: center;
-    gap: 5px;
-  }
-  .menu-content a .icone{
-    display: block;
+    gap: 20px;
+}
+.menu-content a .icone {
+    display: inline-block;
     position: relative;
-    line-height: 50px;
+    font-size: 1.4em;
+    color: #ab3d85;
+    line-height: 1; /* ajuda a evitar desvio vertical */
     text-align: center;
-    font-size: 1.5em;
-    color: #000000;
-    transition: 0.3s;
-  }
-  .menu-content a .icone:hover{
-    color: #9e3869;
-    transform: scale(1.3);
-    transition: 0.2s;
-  }
-  .menu-content a .texto {
+    transition: color 0.3s ease;
+    animation: fadeInMenu 0.3s ease forwards;
+}
+
+/* Círculo atrás */
+.menu-content a .icone::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    background-color: #bb4082;
+    border-radius: 50%;
+    opacity: 0;
+    transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
+    z-index: -1;
+}
+
+/* Hover com círculo maior */
+.menu-content a .icone:hover::before {
+    width: 55px;
+    height: 55px;
+    opacity: 1;
+}
+
+.menu-content a .icone:hover {
+    color: #e9e3e6;
+}
+.menu-content a .texto {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -426,4 +472,4 @@ h3{
     box-shadow: 0 5 15 rgba(0, 0, 0, 0.1);
     opacity: 0;
     visibility: hidden;
-  }
+}

@@ -15,7 +15,7 @@
     overflow-x: hidden;
 }
 body, a {
-        cursor: url(https://cur.cursors-4u.net/anime/ani-1/ani197.ani), url(https://cur.cursors-4u.net/anime/ani-1/ani197.png), auto;
+    cursor: url(https://cur.cursors-4u.net/anime/ani-1/ani197.ani), url(https://cur.cursors-4u.net/anime/ani-1/ani197.png), auto;
 }
 .navigation {
     position: fixed;
@@ -47,7 +47,7 @@ body, a {
 }
 
 .navigation .logo {
-    color: #f7f7f7;
+    color: #fffbfb;
     flex: 50px;
     text-align: center;
     width: 50%;
@@ -191,6 +191,11 @@ h3{
     text-align: center;
     border: solid 1px #e8d9f0;
     border-radius: 10px;
+    background-image: url('../img/morte.png');
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center
 }
 #port h1{
     font-size: 2em;
@@ -265,7 +270,7 @@ h3{
 @keyframes slide-fade-in {
     from { 
         opacity: 0;
-    transform : translateY(10vh);
+    transform : translateY(0);
     }
     to { 
         opacity: 1;
@@ -282,6 +287,51 @@ h3{
         view-timeline-name: --fade-in;
         view-timeline-axis: vertical;
         animation: slide-fade-in 1s ease-in forwards;
-        filter: brightness(50%);
+        filter: brightness(70%);
     }
+    .social-icons {
+        view-timeline-name: --fade-in;
+        view-timeline-axis: vertical;
+        animation: slide-fade-in 1s ease-in forwards;
+    }
+    .line{
+        view-timeline-name: --fade-in;
+        view-timeline-axis: vertical;
+        animation: slide-fade-in 1s ease-in forwards;
+        filter: brightness(70%);
+    }
+
+}
+
+/* Estilo do botão ☰ */
+.menu-toggle {
+  display: none;
+  font-size: 2em;
+  padding: 10px;
+  cursor: pointer;
+  position: fixed;
+  top: 10px;
+  right: 15px;
+  z-index: 1001;
+  background: #483262;
+  color: #fff;
+  border-radius: 8px;
+}
+
+/* Oculta o menu */
+.hidden {
+  display: none;
+}
+
+/* Exibe o menu */
+.show {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Mostra o botão e ajusta o menu no mobile */
+@media (max-width: 700px) {
+  .menu-toggle {
+    display: block;
+  }
 }

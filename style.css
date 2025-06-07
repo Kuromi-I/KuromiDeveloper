@@ -15,9 +15,10 @@
     overflow-x: hidden;
     background-image: linear-gradient(147deg, #000000 0%, #2c3e50 74%);
 }
-body, a {
+body, a{
     cursor: url(https://cur.cursors-4u.net/anime/ani-1/ani197.ani), url(https://cur.cursors-4u.net/anime/ani-1/ani197.png), auto;
 }
+
 .navigation {
     position: fixed;
     top: 0;
@@ -311,6 +312,7 @@ h3{
   color: #fff;
   border-radius: 8px 0 0 8px;
   transition: 0.3s;
+  cursor: url(https://cur.cursors-4u.net/anime/ani-1/ani197.ani), url(https://cur.cursors-4u.net/anime/ani-1/ani197.png), auto;
 }
 .menu-toggle:hover{
     color: #9e3869;

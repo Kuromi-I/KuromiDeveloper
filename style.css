@@ -32,7 +32,7 @@ body, a {
     overflow: hidden;
     padding: 0 20px;
     z-index: 1;
-    opacity: 90%;
+    opacity: 95%;
 }
 .navigation::before {
     content: "";

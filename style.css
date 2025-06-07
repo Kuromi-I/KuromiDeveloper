@@ -33,6 +33,7 @@ body, a {
     padding: 0 20px;
     z-index: 1;
     opacity: 95%;
+    filter: saturate(1.5);
 }
 .navigation::before {
     content: "";

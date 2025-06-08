@@ -12,11 +12,17 @@
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-    background: linear-gradient(to bottom, rgb(10, 10, 10, 0.9), rgba(224, 224, 224, 0.1)),url(../img/cores.jpg) no-repeat center/ cover;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    background: linear-gradient(to bottom,
+    rgba(0, 0, 0, 0.8), 
+    rgba(248, 76, 130, 0.8), 
+    rgba(242, 193, 209, 0.8));
 
+    background-attachment: scroll;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    transition: opacity 0.8s ease-in-out;
 }
 body, a{
     cursor: url(https://cur.cursors-4u.net/anime/ani-1/ani197.ani), url(https://cur.cursors-4u.net/anime/ani-1/ani197.png), auto;

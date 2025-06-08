@@ -21,5 +21,14 @@
         menu.style.display = "none";
         isVisible = false;
       }, 300); // mesmo tempo da animação
-    }
-  });
+    } 
+});
+let timeout;
+window.addEventListener('scroll', () => {
+  document.body.style.opacity = '0.9'; // enquanto rola
+
+  clearTimeout(timeout);
+  timeout = setTimeout(() => {
+    document.body.style.opacity = '1'; // quando parar
+  }, 150);
+});

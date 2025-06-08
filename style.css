@@ -24,6 +24,7 @@
     
     transition: opacity 0.8s ease-in-out;
 }
+
 body, a{
     cursor: url(https://cur.cursors-4u.net/anime/ani-1/ani197.ani), url(https://cur.cursors-4u.net/anime/ani-1/ani197.png), auto;
 }
@@ -487,3 +488,68 @@ h3{
 }
 
 /* Dark Mode */
+:root {
+  --bg-color: linear-gradient(to bottom,
+    rgba(255, 191, 209, 0.8), 
+    rgba(248, 76, 130, 0.8), 
+    rgba(242, 193, 209, 0.8));
+  --text-color: #000000;
+  --nav-bg: linear-gradient(45deg, #8b2658, #06010b);
+  --section-border: #e8d9f0;
+  --highlight: #d45391;
+  --card-bg: linear-gradient(45deg, #f78ec3, #a689c3);
+  --shadow-color: #000000;
+}
+body.dark-mode {
+  --bg-color: #0d0d0d;
+  --text-color: #f3f3f3;
+  --nav-bg: linear-gradient(45deg, #1a1a1a, #000000);
+  --section-border: #e8d9f0;
+  --highlight: #e93d8f;
+  --card-bg: #1f1f1f;
+  --shadow-color: #000000;
+}
+body {
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+
+.navigation {
+  background: var(--nav-bg);
+  border: 1px solid var(--section-border);
+}
+.menu {
+  background: var(--nav-bg);
+  border: 1px solid var(--section-border);
+}
+
+h1, h3 {
+  color: var(--text-color);
+  text-shadow: var(--highlight) 0px 5px 5px;
+}
+
+#about, #skills, #contact, #port {
+  border: 1px solid var(--section-border);
+  color: var(--text-color);
+  background-color: var(--card-bg);
+}
+.toggle-darkmode {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--nav-bg);
+  color: var(--text-color);
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 1.5em;
+  cursor: pointer;
+  z-index: 1002;
+  box-shadow: 0 4px 10px var(--shadow-color);
+  transition: background 0.3s ease;
+}
+
+.toggle-darkmode:hover {
+  background: var(--highlight);
+}

@@ -516,7 +516,7 @@ body {
   background: var(--nav-bg);
   border: 1px solid var(--section-border);
 }
-.menu {
+.menu-toggle, .menu {
   background: var(--nav-bg);
   border: 1px solid var(--section-border);
 }
@@ -546,10 +546,6 @@ h1, h3 {
   z-index: 1002;
   box-shadow: 0 4px 10px var(--shadow-color);
   transition: background 0.3s ease;
-}
-
-.toggle-darkmode:hover {
-  background: var(--highlight);
 }
 .toggle-darkmode ion-icon{ 
   fill: var(--primary-color);

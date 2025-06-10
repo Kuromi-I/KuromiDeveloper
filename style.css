@@ -408,7 +408,6 @@ ion-icon {
 }
 }
 
-/* Estilo do botão ☰ */
 .menu-toggle {
   display: none;
   font-size: 1.5em;
@@ -432,18 +431,15 @@ ion-icon {
     opacity: 0.9;
 }
 
-/* Oculta o menu */
 .hidden {
   display: none;
 }
 
-/* Exibe o menu */
 .show {
   display: flex;
   flex-direction: column;
 }
 
-/* Mostra o botão e ajusta o menu no mobile */
 @media (max-width: 720px) {
   .menu-toggle {
     display: block;
@@ -541,13 +537,12 @@ ion-icon {
     position: relative;
     font-size: 1.4em;
     color: #ab3d85;
-    line-height: 1; /* ajuda a evitar desvio vertical */
+    line-height: 1;
     text-align: center;
     transition: color 0.3s ease;
     animation: fadeInMenu 0.3s ease forwards;
 }
 
-/* Círculo atrás */
 .menu-content a .icone::before {
     content: '';
     position: absolute;
@@ -563,7 +558,6 @@ ion-icon {
     z-index: -1;
 }
 
-/* Hover com círculo maior */
 .menu-content a .icone:hover::before {
     width: 55px;
     height: 55px;
@@ -634,6 +628,9 @@ h1, h3 {
 }
 .toggle-darkmode {
   position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   bottom: 20px;
   right: 20px;
   background: var(--nav-bg);

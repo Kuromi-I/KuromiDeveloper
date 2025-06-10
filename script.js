@@ -38,18 +38,18 @@ window.addEventListener('scroll', () => {
 function toggleDarkMode() {
   document.body.classList.toggle('dark-mode');
 }
-const botao = document.getElementById('toggle-darkmode');
-const corpo = document.body;
+const button = document.getElementById('toggle-darkmode');
+const body = document.body;
 
 if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-  corpo.classList.add('dark-mode');
-  botao.textContent = 'Dark Mode';
+  body.classList.add('dark-mode');
+  button.textContent = 'Dark Mode';
 }
-botao.addEventListener('click', () => {
-  corpo.classList.toggle('dark-mode');
-  if (corpo.classList.contains('dark-mode')) {
-    botao.textContent = 'Light Mode';
+button.addEventListener('click', () => {
+  body.classList.toggle('dark-mode');
+  if (body.classList.contains('dark-mode')) {
+    button.textContent = 'Light Mode';
   } else {
-    botao.textContent = 'Dark Mode';
+    button.textContent = 'Dark Mode';
   }
 });

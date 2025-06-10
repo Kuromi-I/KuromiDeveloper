@@ -5,7 +5,7 @@
 
   toggle.addEventListener("click", () => {
     if (!isVisible) {
-
+      
       menu.classList.remove("fade-out");
       menu.style.display = "flex";
       void menu.offsetWidth; 
@@ -16,14 +16,13 @@
       menu.classList.remove("fade-in");
       menu.classList.add("fade-out");
 
-
       setTimeout(() => {
         menu.style.display = "none";
         isVisible = false;
-      }, 300); 
+      }, 300);
     } 
 });
-// Opacity
+
 let timeout;
 window.addEventListener('scroll', () => {
   document.body.style.opacity = '0.9'; 
@@ -34,22 +33,21 @@ window.addEventListener('scroll', () => {
   }, 150);
 });
 
-//Dark  Mode
 function toggleDarkMode() {
   document.body.classList.toggle('dark-mode');
 }
-const button = document.getElementById('toggle-darkmode');
-const body = document.body;
+const botao = document.getElementById('toggle-darkmode');
+const corpo = document.body;
 
 if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-  body.classList.add('dark-mode');
-  button.textContent = 'Dark Mode';
+  corpo.classList.add('dark-mode');
+  botao.textContent = 'Dark Mode';
 }
-button.addEventListener('click', () => {
-  body.classList.toggle('dark-mode');
-  if (body.classList.contains('dark-mode')) {
-    button.textContent = 'Light Mode';
+botao.addEventListener('click', () => {
+  corpo.classList.toggle('dark-mode');
+  if (corpo.classList.contains('dark-mode')) {
+    botao.textContent = 'Light Mode';
   } else {
-    button.textContent = 'Dark Mode';
+    botao.textContent = 'Dark Mode';
   }
 });

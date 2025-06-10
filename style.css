@@ -491,7 +491,7 @@ h3{
     rgba(255, 191, 209, 0.8), 
     rgba(248, 76, 130, 0.8), 
     rgba(242, 193, 209, 0.8));
-  --text-color: #000000;
+  --text-color: #ffffff;
   --nav-bg: linear-gradient(45deg, #8b2658, #06010b);
   --section-border: #e8d9f0;
   --highlight: #d45391;

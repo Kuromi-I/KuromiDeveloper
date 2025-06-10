@@ -551,3 +551,15 @@ h1, h3 {
 .toggle-darkmode:hover {
   background: var(--highlight);
 }
+.toggle-darkmode ion-icon{ 
+  fill: var(--primary-color);
+}
+.toggle-darkmode ion-icon:last-child{
+  display: none;
+}
+.toggle-darkmode.active ion-icon:first-child{
+  display: none;
+}
+.toggle-darkmode.active ion-icon:last-child{
+  display: block;
+}

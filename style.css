@@ -590,14 +590,14 @@ ion-icon {
 :root {
   --bg-color: linear-gradient(to bottom,
     rgba(255, 191, 209, 0.8), 
-    rgba(248, 76, 130, 0.8), 
-    rgba(242, 193, 209, 0.8));
-  --text-color: #ffffff;
-  --nav-bg: linear-gradient(45deg, #8b2658, #06010b);
+    rgba(93, 46, 60, 0.5), 
+    rgba(198, 147, 164, 0.5));
+  --text-color: #f9eeee;
+  --nav-bg: linear-gradient(45deg, #c03f66, #7f1938);
   --section-border: #e8d9f0;
   --highlight: #d45391;
   --card-bg: linear-gradient(45deg, #f78ec3, #a689c3);
-  --shadow-color: #000000;
+  --shadow-color: #181313;
 }
 body.dark-mode {
   --bg-color: #0d0d0d;

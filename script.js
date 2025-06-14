@@ -5,14 +5,14 @@
 
   toggle.addEventListener("click", () => {
     if (!isVisible) {
-      
+
       menu.classList.remove("fade-out");
       menu.style.display = "flex";
-      void menu.offsetWidth; 
+      void menu.offsetWidth;
       menu.classList.add("fade-in");
       isVisible = true;
     } else {
-
+      
       menu.classList.remove("fade-in");
       menu.classList.add("fade-out");
 
@@ -22,10 +22,10 @@
       }, 300);
     } 
 });
-
+// Opacidade
 let timeout;
 window.addEventListener('scroll', () => {
-  document.body.style.opacity = '0.9'; 
+  document.body.style.opacity = '0.9';
 
   clearTimeout(timeout);
   timeout = setTimeout(() => {
@@ -33,24 +33,63 @@ window.addEventListener('scroll', () => {
   }, 150);
 });
 
-function toggleDarkMode() {
-  document.body.classList.toggle('dark-mode');
-}
-const botao = document.getElementById('toggle-darkmode');
-const corpo = document.body;
+// Dark Mode
+let darkmode = localStorage.getItem('dark-mode');
+const toggleDarkModeBtn = document.querySelector('.toggle-darkmode');
 
-if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-  corpo.classList.add('dark-mode');
-  botao.textContent = 'Dark Mode';
+const enableDarkMode = () => {
+  document.body.classList.add('dark-mode');
+  localStorage.setItem('dark-mode', 'active');
 }
-botao.addEventListener('click', () => {
-  corpo.classList.toggle('dark-mode');
-  if (corpo.classList.contains('dark-mode')) {
-    botao.textContent = 'Light Mode';
-  } else {
-    botao.textContent = 'Dark Mode';
-  }
+
+const disableDarkMode = () => {
+  document.body.classList.remove('dark-mode');
+  localStorage.setItem('dark-mode', null);
+}
+
+if (darkmode === "active") {
+  enableDarkMode();
+}
+
+toggleDarkModeBtn.addEventListener('click', () => {
+  darkmode = localStorage.getItem('dark-mode');
+  darkmode !== "active" ? enableDarkMode() : disableDarkMode();
 });
+
+//img portfolio
+document.addEventListener('DOMContentLoaded', () => {
+  let currentIndex = 0;
+  const cards = document.querySelectorAll('.cards li');
+  const totalCards = cards.length;
+
+function showCard(index) {
+  console.log("Mostrando imagem:", index);
+  cards.forEach((card, i) => {
+    card.classList.toggle('active', i === index);
+  });
+}
+
+  function next() {
+    currentIndex = (currentIndex + 1) % totalCards;
+    showCard(currentIndex);
+  }
+
+  function prev() {
+    currentIndex = (currentIndex - 1 + totalCards) % totalCards;
+    showCard(currentIndex);
+  }
+
+  showCard(currentIndex);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') next();
+    if (e.key === 'ArrowLeft') prev();
+  });
+
+  window.next = next;
+  window.prev = prev;
+});
+
 // casino-button
 
   const wrapper = document.querySelector('.casino-wrapper');

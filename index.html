@@ -87,10 +87,19 @@
         <section id="port">
             <div class="port-content">
                 <h1>Portfolio</h1>
+                <p>Je vous présente mon portfolio, quelques images et illustrations que j'ai réalisées.</p>
             </div>
                 <div class="gallery">
+                    <ul class="cards">
+                        <li><img src="../img/cores.jpg" alt="cores"></li>
+                        <li><img src="../img/deserto.jpg" alt="deserto"></li>
+                        <li><img src="../img/dados.jpg" alt="dados"></li>
+                        <li><img src="../img/fundo.png" alt="fundo"></li>
+                    </ul>
                 </div>
                 <div class="controls">
+                    <button class="prev" onclick="prev()"><ion-icon name="chevron-back-outline"></ion-icon></button>
+                    <button class="next" onclick="next()"> <ion-icon name="chevron-forward-outline"></ion-icon></button>
                 </div>
         </section>
     
@@ -116,10 +125,17 @@
         </section>
     <div class="dark-mode" >
         <button class="toggle-darkmode" onclick="toggleDarkMode()">
-            <ion-icon name="moon-outline"></ion-icon>
             <ion-icon name="sunny-outline"></ion-icon>
+            <ion-icon name="moon-outline"></ion-icon>
             </button>
     </div>
+    
+   <div class="casino-wrapper">
+        <button class="casino-button" id="toggleButton">
+        <ion-icon name="game-controller-outline"></ion-icon>
+        </button>
+    </div>
+
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script> <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
   <script src="script.js"></script>
 </body>

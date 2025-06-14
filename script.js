@@ -51,3 +51,12 @@ botao.addEventListener('click', () => {
     botao.textContent = 'Dark Mode';
   }
 });
+// casino-button
+
+  const wrapper = document.querySelector('.casino-wrapper');
+  const button = document.getElementById('toggleButton');
+
+  button.addEventListener('click', () => {
+    wrapper.classList.toggle('open');
+  });
+

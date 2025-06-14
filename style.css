@@ -657,3 +657,31 @@ h1, h3 {
 .toggle-darkmode.active ion-icon:last-child{
   display: block;
 }
+/* casino-button */
+.casino-wrapper {
+  position: fixed;
+  bottom: 10px;
+  left: -40px; 
+  transition: left 0.4s ease;
+  z-index: 1002;
+}
+
+.casino-wrapper.open {
+  left: 0px;
+}
+
+.casino-button {
+  all: unset;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--nav-bg, #333);
+  color: var(--text-color, #fff);
+  border-radius: 0 10px 10px 0;
+  width: 50px;
+  height: 50px;
+  font-size: 1.5em;
+  cursor: pointer;
+  box-shadow: 0 4px 10px var(--shadow-color, rgba(0, 0, 0, 0.5));
+  transition: background 0.3s ease;
+}

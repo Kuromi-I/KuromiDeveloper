@@ -17,7 +17,7 @@
       draw();
     }
 
-    // Teclado
+    // keyboard
     window.addEventListener("keydown", (e) => {
       switch (e.key) {
         case "ArrowUp": move(0, -10); break;

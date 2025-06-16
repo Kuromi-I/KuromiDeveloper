@@ -8,7 +8,7 @@
 
       menu.classList.remove("fade-out");
       menu.style.display = "flex";
-      void menu.offsetWidth;
+      void menu.offsetWidth; 
       menu.classList.add("fade-in");
       isVisible = true;
     } else {
@@ -16,16 +16,17 @@
       menu.classList.remove("fade-in");
       menu.classList.add("fade-out");
 
+     
       setTimeout(() => {
         menu.style.display = "none";
         isVisible = false;
       }, 300);
     } 
 });
-// Opacidade
+
 let timeout;
 window.addEventListener('scroll', () => {
-  document.body.style.opacity = '0.9';
+  document.body.style.opacity = '0.9'; 
 
   clearTimeout(timeout);
   timeout = setTimeout(() => {
@@ -79,6 +80,7 @@ function showCard(index) {
     showCard(currentIndex);
   }
 
+ 
   showCard(currentIndex);
 
   document.addEventListener('keydown', (e) => {
@@ -98,4 +100,3 @@ function showCard(index) {
   button.addEventListener('click', () => {
     wrapper.classList.toggle('open');
   });
-

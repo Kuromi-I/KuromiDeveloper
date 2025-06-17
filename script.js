@@ -5,14 +5,14 @@
 
   toggle.addEventListener("click", () => {
     if (!isVisible) {
-
+     
       menu.classList.remove("fade-out");
       menu.style.display = "flex";
       void menu.offsetWidth; 
       menu.classList.add("fade-in");
       isVisible = true;
     } else {
-      
+      // fade-out
       menu.classList.remove("fade-in");
       menu.classList.add("fade-out");
 
@@ -20,10 +20,10 @@
       setTimeout(() => {
         menu.style.display = "none";
         isVisible = false;
-      }, 300);
+      }, 300); 
     } 
 });
-
+// Opacity
 let timeout;
 window.addEventListener('scroll', () => {
   document.body.style.opacity = '0.9'; 
@@ -59,37 +59,29 @@ toggleDarkModeBtn.addEventListener('click', () => {
 
 //img portfolio
 document.addEventListener('DOMContentLoaded', () => {
-  let currentIndex = 0;
   const cards = document.querySelectorAll('.cards li');
-  const totalCards = cards.length;
+  let currentIndex = 0;
 
-function showCard(index) {
-  console.log("Mostrando imagem:", index);
-  cards.forEach((card, i) => {
-    card.classList.toggle('active', i === index);
-  });
-}
-
-  function next() {
-    currentIndex = (currentIndex + 1) % totalCards;
-    showCard(currentIndex);
+  function showCard(index) {
+    cards.forEach((card, i) => {
+      card.classList.toggle('active', i === index);
+    });
   }
 
-  function prev() {
-    currentIndex = (currentIndex - 1 + totalCards) % totalCards;
+  window.next = () => {
+    currentIndex = (currentIndex + 1) % cards.length;
     showCard(currentIndex);
-  }
+  };
+  window.prev = () => {
+    currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+    showCard(currentIndex);
+  };
 
- 
   showCard(currentIndex);
-
-  document.addEventListener('keydown', (e) => {
+  document.addEventListener('keydown', e => {
     if (e.key === 'ArrowRight') next();
     if (e.key === 'ArrowLeft') prev();
   });
-
-  window.next = next;
-  window.prev = prev;
 });
 
 // casino-button

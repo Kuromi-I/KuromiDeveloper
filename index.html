@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <title>Kuromi-Web</title>
 </head>
+
 <body>
 
     <header class="navigation">
@@ -44,7 +45,6 @@
             </a>
         </nav>
     </header>
-
     <div class="menu-toggle" onclick="toggleMenu()">☰</div>
     <div class="menu">
         <div class="menu-content">
@@ -70,8 +70,6 @@
         </div>
     </div>
     <section id="home">
-        <div class="home-img">
-        </div>
         <div class="home-content">
             <h1>Hi, I'm <span>Kuromi</span></h1>
             <h3 class="typing-text">Front-end Developer - Designer</h3>
@@ -84,45 +82,52 @@
 
     </section>
     
-        <section id="port">
-            <div class="port-content">
-                <h1>Portfolio</h1>
-                <p>Je vous présente mon portfolio, quelques images et illustrations que j'ai réalisées.</p>
-            </div>
-                <div class="gallery">
-                    <ul class="cards">
-                        <li><img src="../img/cores.jpg" alt="cores"></li>
-                        <li><img src="../img/deserto.jpg" alt="deserto"></li>
-                        <li><img src="../img/dados.jpg" alt="dados"></li>
-                        <li><img src="../img/fundo.png" alt="fundo"></li>
-                    </ul>
-                </div>
-                <div class="controls">
-                    <button class="prev" onclick="prev()"><ion-icon name="chevron-back-outline"></ion-icon></button>
-                    <button class="next" onclick="next()"> <ion-icon name="chevron-forward-outline"></ion-icon></button>
-                </div>
-        </section>
+<div id="port">
+  <!-- Conteúdo à esquerda -->
+  <div class="port-content">
+    <h1>Portfolio</h1>
+    <p>Je vous présente mon portfolio, quelques images et illustrations que j'ai réalisées.</p>
+  </div>
+
+  <!-- Galeria à direita -->
+  <div class="gallery">
+    <ul class="cards">
+      <li class="active"><img src="../img/cores.jpg" alt="cores"></li>
+      <li><img src="../img/deserto.jpg" alt="deserto"></li>
+      <li><img src="../img/dados.jpg" alt="dados"></li>
+      <li><img src="../img/fundo.png" alt="fundo"></li>
+    </ul>
+
+    <!-- Controles -->
+    <div class="controls">
+      <button class="prev" onclick="prev()">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </button>
+      <button class="next" onclick="next()">
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </button>
+    </div>
+  </div>
+</div>
     
-        <section id="about">
-            <div class="about-content">
-                <h1>About</h1>
-                <p>coming soon</p>
-            </div>
-        </section>
-    
-        <section id="skills">
-            <div class="skills-content">
-                <h1>Skills</h1>
-                <p>coming soon</p>
-            </div>
-        </section>
-    
-        <section id="contact">
-            <div class="contact-content">
-                <h1>Contact</h1>
-                <p>coming soon</p>
-            </div>
-        </section>
+<div id="about">
+    <div class="about-content">
+        <h1>About</h1>
+        <p>coming soon</p>
+    </div>
+</div>
+<div id="skills">
+    <div class="skills-content">
+        <h1>Skills</h1>
+        <p>coming soon</p>
+    </div>
+</div>
+<div id="contact">
+    <div class="contact-content">
+        <h1>Contact</h1>
+        <p>coming soon</p>
+    </div>
+</div>
     <div class="dark-mode" >
         <button class="toggle-darkmode" onclick="toggleDarkMode()">
             <ion-icon name="sunny-outline"></ion-icon>
@@ -130,14 +135,17 @@
             </button>
     </div>
     
-    <div class="casino-wrapper">
+<div class="casino-wrapper">
     <button class="casino-button" id="toggleButton">
         <a href="../games/casino.html" class="icon-link" onclick="event.stopPropagation()">
         <ion-icon name="game-controller-outline"></ion-icon>
         </a>
+        <a href="test.html" class="alert-icon">
+            <ion-icon name="alert-circle-outline"></ion-icon>
+        </a>
     </button>
-    </div>
-    
+</div>
+
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script> <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
   <script src="script.js"></script>
 </body>

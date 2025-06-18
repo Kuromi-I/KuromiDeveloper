@@ -141,7 +141,8 @@ body, a{
   }
 }
 .navigation ion-icon {
-  font-size: 1em;
+  font-size: 0.9em;
+  transition: all 0.4s;
 }
 /* section */
 #home, #port, #about, #skills, #contact{

@@ -89,9 +89,9 @@ body, a{
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 80px;
+  height: 95px;
   margin: 0 5px;
-  padding: 0 10px;
+  padding: 0 5px;
   text-decoration: none;
 }
 .navigation .list a .icon {
@@ -108,19 +108,18 @@ body, a{
 
 .navigation .list a .text {
   color: #f7f7f7;
-  font-weight: 400;
-  font-size: 0.80em;
-  letter-spacing: 0.05em;
+  font-weight: 300;
+  font-size: 0.9em;
+  letter-spacing: 0.01em;
   transition: all 0.4s;
   opacity: 0;
   transform: translateY(10px);
 
 }
-
 .navigation a:hover .text {
   opacity: 1;
   color: rgb(255, 255, 255);
-  transform: translateY(-10px);
+  transform: translateY(-15px);
   text-shadow: #000000 0px  10px 5px;
     
 }
@@ -134,14 +133,16 @@ body, a{
   }
 
   .navigation a {
-    flex-direction: column; 
+    flex-direction: column;
   }
 
   .social-icons a {
-    font-size: 20px; 
+    font-size: 20px;
   }
 }
-
+.navigation ion-icon {
+  font-size: 1em;
+}
 /* section */
 #home, #port, #about, #skills, #contact{
   min-height: 100vh;
@@ -223,6 +224,7 @@ h3{
   justify-content: center;
 }
 
+/* Galeria de imagens */
 .gallery {
   position: absolute;
   right: 0;
@@ -291,7 +293,7 @@ h3{
   background: rgba(255, 255, 255, 0.2);
 }
 
-.controls ion-icon {
+ion-icon {
   font-size: 20px;
   color: white;
 }
@@ -408,6 +410,7 @@ h3{
 }
 }
 
+/* Estilo do botão ☰ */
 .menu-toggle {
   display: none;
   font-size: 1.5em;
@@ -425,20 +428,20 @@ h3{
   cursor: url(https://cur.cursors-4u.net/anime/ani-1/ani197.ani), url(https://cur.cursors-4u.net/anime/ani-1/ani197.png), auto;
   box-shadow: #0f0f0f 0px 5px 5px;
 }
-.menu-toggle:hover{
-    transform: scale(1.1);
-    transition: 0.2s;
-    opacity: 0.9;
+.menu ion-icon{
+  font-size: 1em;
 }
-
+/* Oculta o menu */
 .hidden {
   display: none;
 }
 
+/* Exibe o menu */
 .show {
   display: flex;
   flex-direction: column;
 }
+
 
 @media (max-width: 800px) {
   .menu-toggle {
@@ -530,22 +533,20 @@ h3{
     justify-content: center;
     align-items: center;
     text-align: center;
-    gap: 25px;
+    gap: 20px;
 }
 .menu-content a .icone {
     display: inline-block;
     position: relative;
     font-size: 1.4em;
     color: #ebe0e7;
-    line-height: 1;
+    line-height: 1; 
     text-align: center;
     transition: color 0.3s ease;
     animation: fadeInMenu 0.3s ease forwards;
 }
-.icone ion-icon {
-  font-size: 1.1em; 
-}
 
+/* Círculo atrás */
 .menu-content a .icone::before {
     content: '';
     position: absolute;
@@ -561,6 +562,7 @@ h3{
     z-index: -1;
 }
 
+/* Hover com círculo maior */
 .menu-content a .icone:hover::before {
     width: 55px;
     height: 55px;
@@ -603,7 +605,7 @@ body.dark-mode {
   --section-border: #e8d9f0;
   --highlight: #312c2f;
   --card-bg: #1f1f1f;
-  --shadow-color: #000000;
+  --shadow-color: #212121;
 }
 body {
   background: var(--bg-color);
@@ -645,8 +647,9 @@ h1, h3 {
   font-size: 1.5em;
   cursor: pointer;
   z-index: 1002;
-  box-shadow: 0 4px 10px var(--shadow-color);
+  box-shadow: 1px 4px 5px var(--shadow-color);
   transition: background 0.3s ease;
+  transition: transform 0.4s ease, opacity 0.4s ease;
 }
 .toggle-darkmode ion-icon{ 
   fill: var(--primary-color);
@@ -688,7 +691,7 @@ body.dark-mode .toggle-darkmode ion-icon:last-child {
   height: 45px;
   font-size: 1.5em;
   cursor: pointer;
-  box-shadow: 0 4px 10px var(--shadow-color, rgba(0, 0, 0, 0.5));
+  box-shadow: 1px 4px 5px var(--shadow-color, rgba(0, 0, 0, 0.5));
   transition: background 0.3s ease;
 }
 .icon-link {
@@ -707,7 +710,7 @@ body.dark-mode .toggle-darkmode ion-icon:last-child {
   width: 35px;
   height: 35px;
   border-radius: 100%;
-  box-shadow: 0 4px 10px var(--shadow-color, rgba(0, 0, 0, 0.5));
+  box-shadow: 1px 4px 5px var(--shadow-color, rgba(0, 0, 0, 0.5));
 }
 
 .icon-link ion-icon {
@@ -730,7 +733,7 @@ body.dark-mode .toggle-darkmode ion-icon:last-child {
   border-radius: 100%;
   width: 35px;
   height: 35px;
-  box-shadow: 0 4px 10px var(--shadow-color, rgba(0, 0, 0, 0.5));
+  box-shadow: 1px 4px 5px var(--shadow-color, rgba(0, 0, 0, 0.5));
 }
 
 .alert-icon ion-icon {

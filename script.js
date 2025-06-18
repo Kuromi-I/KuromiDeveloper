@@ -5,14 +5,14 @@
 
   toggle.addEventListener("click", () => {
     if (!isVisible) {
-     
+ 
       menu.classList.remove("fade-out");
       menu.style.display = "flex";
       void menu.offsetWidth; 
       menu.classList.add("fade-in");
       isVisible = true;
     } else {
-      // fade-out
+    
       menu.classList.remove("fade-in");
       menu.classList.add("fade-out");
 
@@ -34,28 +34,58 @@ window.addEventListener('scroll', () => {
   }, 150);
 });
 
-// Dark Mode
-let darkmode = localStorage.getItem('dark-mode');
-const toggleDarkModeBtn = document.querySelector('.toggle-darkmode');
+//Dark Mode
+document.addEventListener('DOMContentLoaded', () => {
+  const toggleDarkModeBtn = document.querySelector('.toggle-darkmode');
 
-const enableDarkMode = () => {
-  document.body.classList.add('dark-mode');
-  localStorage.setItem('dark-mode', 'active');
-}
 
-const disableDarkMode = () => {
-  document.body.classList.remove('dark-mode');
-  localStorage.setItem('dark-mode', null);
-}
+  const enableDarkMode = () => {
+    document.body.classList.add('dark-mode');
+    localStorage.setItem('dark-mode', 'active');
+  };
 
-if (darkmode === "active") {
-  enableDarkMode();
-}
+  const disableDarkMode = () => {
+    document.body.classList.remove('dark-mode');
+    localStorage.setItem('dark-mode', null);
+  };
 
-toggleDarkModeBtn.addEventListener('click', () => {
-  darkmode = localStorage.getItem('dark-mode');
-  darkmode !== "active" ? enableDarkMode() : disableDarkMode();
+
+  let darkmode = localStorage.getItem('dark-mode');
+  if (darkmode === "active") {
+    enableDarkMode();
+  }
+
+
+  const openButton = () => {
+    toggleDarkModeBtn.style.opacity = '1';
+    toggleDarkModeBtn.style.transform = 'translateX(0)';
+  };
+
+  const closeButton = () => {
+    toggleDarkModeBtn.style.opacity = '1';
+    toggleDarkModeBtn.style.transform = 'translateX(38px)';
+  };
+
+
+  openButton();
+
+  
+  let closeTimeout = setTimeout(closeButton, 2000);
+
+
+  toggleDarkModeBtn.addEventListener('click', () => {
+    darkmode = localStorage.getItem('dark-mode');
+    darkmode !== "active" ? enableDarkMode() : disableDarkMode();
+
+
+    openButton();
+
+
+    clearTimeout(closeTimeout);
+    closeTimeout = setTimeout(closeButton, 2000);
+  });
 });
+
 
 //img portfolio
 document.addEventListener('DOMContentLoaded', () => {
@@ -86,9 +116,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // casino-button
 
+document.addEventListener('DOMContentLoaded', () => {
   const wrapper = document.querySelector('.casino-wrapper');
   const button = document.getElementById('toggleButton');
+
+  wrapper.classList.add('open');
+
+  setTimeout(() => {
+    wrapper.classList.remove('open');
+  }, 1000);
 
   button.addEventListener('click', () => {
     wrapper.classList.toggle('open');
   });
+});

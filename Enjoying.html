@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.
+    0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="../img/blackrose.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <title>Kuromi-Web</title>
+</head>
+<body>
+  <style>
+    /* Define o fundo escuro para destacar as bolhas */
+    body, html {
+      margin: 0;
+      height: 100%;
+      overflow: hidden;
+      background: linear-gradient(135deg, #0a3d62, #1e3799);
+      position: relative;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Container que vai conter as bolhas */
+    .bubble-container {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      top: 0;
+      left: 0;
+      pointer-events: none; /* para não interferir em cliques */
+      z-index: 0;
+    }
+
+    /* Estilo base das bolhas */
+    .bubble {
+      position: absolute;
+      bottom: -100px; /* começa abaixo da tela */
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      opacity: 0.7;
+      animation-name: floatUp;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+
+    /* Animação que faz a bolha subir */
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.7;
+      }
+      100% {
+        transform: translateY(-110vh) scale(1.2);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bubble-container"></div>
+
+  <script>
+    const container = document.querySelector('.bubble-container');
+
+    function createBubble() {
+      const bubble = document.createElement('div');
+      bubble.classList.add('bubble');
+
+      // Tamanho aleatório da bolha
+      const size = Math.random() * 40 + 10; // 10px a 50px
+      bubble.style.width = `${size}px`;
+      bubble.style.height = `${size}px`;
+
+      // Posição horizontal aleatória dentro da tela
+      bubble.style.left = `${Math.random() * 100}vw`;
+
+      // Duração da animação aleatória (quanto maior, mais lento sobe)
+      const duration = Math.random() * 10 + 5; // 5s a 15s
+      bubble.style.animationDuration = `${duration}s`;
+
+      container.appendChild(bubble);
+
+      // Remove a bolha após a animação terminar para liberar memória
+      setTimeout(() => {
+        bubble.remove();
+      }, duration * 1000);
+    }
+
+    // Cria uma nova bolha a cada 300ms
+    setInterval(createBubble, 300);
+
+    // Cria algumas bolhas iniciais para não ficar vazio no começo
+    for (let i = 0; i < 10; i++) {
+      setTimeout(createBubble, i * 400);
+    }
+  </script>
+</body>
+</html>

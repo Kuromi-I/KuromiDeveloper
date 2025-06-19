@@ -34,8 +34,6 @@ body, a{
 
 .navigation.show {
   opacity: 1;
-  max-width: 700px;
-  height: 70px;
 }
 .navigation {
   position: fixed;

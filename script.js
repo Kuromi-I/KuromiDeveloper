@@ -130,3 +130,22 @@ document.addEventListener('DOMContentLoaded', () => {
     wrapper.classList.toggle('open');
   });
 });
+// navigation
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const nav = document.querySelector('.navigation');
+    let lastScroll = window.scrollY;
+
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.scrollY;
+
+      if (currentScroll > lastScroll) {
+        nav.classList.add('hide'); // Scroll down
+      } else {
+        nav.classList.remove('hide'); // Scroll up
+      }
+
+      lastScroll = currentScroll;
+    });
+  });
+

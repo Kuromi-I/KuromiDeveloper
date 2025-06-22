@@ -45,6 +45,7 @@
             </a>
         </nav>
     </header>
+
     <div class="menu-toggle" onclick="toggleMenu()">☰</div>
     <div class="menu">
         <div class="menu-content">
@@ -74,42 +75,81 @@
             <h1>Hi, I'm <span>Kuromi</span></h1>
             <h3 class="typing-text">Front-end Developer - Designer</h3>
             <div class="social-icons">
-                <a target="_blank" href="https://github.com"><i class="fab fa-github"></i></a>
-                <a target="_blank" href="https://www.linkedin.com"><i class="fab fa-linkedin"></i></a>
-                <a target="_blank" href="https://www.instagram.com"><i class="fab fa-instagram"></i></a>
+                <a target="_blank" href="https://github.com/Kuromi-I"><i class="fab fa-github"></i></a>
+                <a target="_blank" href="https://www.linkedin.com/in/isadora-vieira-b0773716a/"><i class="fab fa-linkedin"></i></a>
+                <a target="_blank" href="https://www.instagram.com/kuromideveloper/profilecard/?igsh=MWZneGk2NnNkYTh2cQ=="><i class="fab fa-instagram"></i></a>
             </div>
         </div>
 
     </section>
     
+<!-- PORTFOLIO / SLIDER -->
 <div id="port">
-  <!-- Conteúdo à esquerda -->
-  <div class="port-content">
-    <h1>Portfolio</h1>
-    <p>Je vous présente mon portfolio, quelques images et illustrations que j'ai réalisées.</p>
-  </div>
+  <div id="slider" class="gallery">
+      
+    <input type="radio" name="slider" id="s1" checked>
+    <input type="radio" name="slider" id="s2">
+    <input type="radio" name="slider" id="s3">
+    <input type="radio" name="slider" id="s4">
 
-  <!-- Galeria à direita -->
-  <div class="gallery">
-    <ul class="cards">
-      <li class="active"><img src="../img/cores.jpg" alt="cores"></li>
-      <li><img src="../img/deserto.jpg" alt="deserto"></li>
-      <li><img src="../img/dados.jpg" alt="dados"></li>
-      <li><img src="../img/fundo.png" alt="fundo"></li>
-    </ul>
+    <div id="slides">
+      <div id="overflow">
+        <div class="inner">
+          <div class="slide">
+            <img src="../img/morte.png" alt="cores">
+            <div class="text">
+              <h2>Morte</h2>
+              <p>Ilustração inspirada na personagem de Sandman, com tons sombrios e serenos.</p>
+            </div>
+          </div>
+          <div class="slide">
+            <img src="../img/invencivel.png" alt="deserto">
+            <div class="text">
+              <h2>Invencível</h2>
+              <p>Estudo de cores baseado na série "Invincible", com foco em impacto visual.</p>
+            </div>
+          </div>
+          <div class="slide">
+            <img src="../img/supermanbatm.png" alt="dados">
+            <div class="text">
+              <h2>Superman & Batman</h2>
+              <p>Contraste de heróis em uma arte que mistura sombra, luz e narrativa visual.</p>
+            </div>
+          </div>
+          <div class="slide">
+            <img src="../img/witch.png" alt="fundo">
+            <div class="text">
+              <h2>Feiticeira</h2>
+              <p>Retrato de uma bruxa mágica, com elementos de fantasia e mistério.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <!-- Controles -->
-    <div class="controls">
-      <button class="prev" onclick="prev()">
-        <ion-icon name="chevron-back-outline"></ion-icon>
-      </button>
-      <button class="next" onclick="next()">
-        <ion-icon name="chevron-forward-outline"></ion-icon>
-      </button>
+    <div id="controls">
+      <label for="s4"><ion-icon name="chevron-back-outline"></ion-icon></label>
+      <label for="s2"><ion-icon name="chevron-forward-outline"></ion-icon></label>
+
+      <label for="s1"><ion-icon name="chevron-back-outline"></ion-icon></label>
+      <label for="s3"><ion-icon name="chevron-forward-outline"></ion-icon></label>
+
+      <label for="s2"><ion-icon name="chevron-back-outline"></ion-icon></label>
+      <label for="s4"><ion-icon name="chevron-forward-outline"></ion-icon></label>
+
+      <label for="s3"><ion-icon name="chevron-back-outline"></ion-icon></label>
+      <label for="s1"><ion-icon name="chevron-forward-outline"></ion-icon></label>
+    </div>
+
+    <div id="bullets">
+      <label for="s1"></label>
+      <label for="s2"></label>
+      <label for="s3"></label>
+      <label for="s4"></label>
     </div>
   </div>
 </div>
-    
+
 <div id="about">
     <div class="about-content">
         <h1>About</h1>
@@ -130,22 +170,27 @@
 </div>
     <div class="dark-mode" >
         <button class="toggle-darkmode" onclick="toggleDarkMode()">
-            <ion-icon name="sunny-outline"></ion-icon>
             <ion-icon name="moon-outline"></ion-icon>
+            <ion-icon name="sunny-outline"></ion-icon>
             </button>
     </div>
     
 <div class="casino-wrapper">
     <button class="casino-button" id="toggleButton">
-        <a href="Enjoying.html" class="icon-link" onclick="event.stopPropagation()">
+        <a href="../games/casino.html" class="icon-link" onclick="event.stopPropagation()">
         <ion-icon name="game-controller-outline"></ion-icon>
         </a>
-        <a href="test.html" class="alert-icon">
+        <a href="re.html" class="alert-icon">
             <ion-icon name="alert-circle-outline"></ion-icon>
         </a>
     </button>
 </div>
-
+<div>
+    <a href="#home" class="back-to-top" title="Voltar ao topo">
+  <ion-icon name="arrow-up-outline"></ion-icon>
+    </a>
+</div>
+    <canvas id="mainCanvas"></canvas>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script> <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
   <script src="script.js"></script>
 </body>

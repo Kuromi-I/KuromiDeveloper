@@ -8,7 +8,7 @@
 
       menu.classList.remove("fade-out");
       menu.style.display = "flex";
-      void menu.offsetWidth; 
+      void menu.offsetWidth;
       menu.classList.add("fade-in");
       isVisible = true;
     } else {
@@ -19,11 +19,11 @@
       setTimeout(() => {
         menu.style.display = "none";
         isVisible = false;
-      }, 500); 
+      }, 500);
     } 
 });
 
-// Dark-Mode
+// Dark Mode
 document.addEventListener('DOMContentLoaded', () => {
   const toggleDarkModeBtn = document.querySelector('.toggle-darkmode');
 
@@ -86,6 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
     wrapper.classList.remove('open');
   }, 1000);
 
+  // Toggle 
   button.addEventListener('click', () => {
     wrapper.classList.toggle('open');
   });
@@ -105,7 +106,6 @@ document.addEventListener('scroll', () => {
 
 //  Bubbles
 window.addEventListener("DOMContentLoaded", () => {
-
   const canvas = document.getElementById('mainCanvas');
   const ctx = canvas.getContext('2d');
 
@@ -113,18 +113,28 @@ window.addEventListener("DOMContentLoaded", () => {
   const fieldCtx = fieldCanvas.getContext('2d');
 
   let width, height, fieldWidth, fieldHeight;
-  const scale = 0.2;
+  const scale = window.innerWidth < 768 ? 0.12 : 0.2; 
+
   function resize() {
     width = window.innerWidth;
     height = window.innerHeight;
+
     fieldWidth = Math.floor(width * scale);
     fieldHeight = Math.floor(height * scale);
 
-    canvas.width = width;
-    canvas.height = height;
+    const dpr = window.devicePixelRatio || 1;
+
+    canvas.width = width * dpr;
+    canvas.height = height * dpr;
+    canvas.style.width = width + 'px';
+    canvas.style.height = height + 'px';
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.scale(dpr, dpr);
+
     fieldCanvas.width = fieldWidth;
     fieldCanvas.height = fieldHeight;
   }
+
   window.addEventListener('resize', resize);
   resize();
 
@@ -133,15 +143,16 @@ window.addEventListener("DOMContentLoaded", () => {
     return prefersDark || document.body.classList.contains('dark-mode');
   }
 
-  // Metaballs
   const metaballs = [];
-  for (let i = 0; i < 55; i++) {
+  const ballCount = window.innerWidth < 768 ? 30 : 55;
+
+  for (let i = 0; i < ballCount; i++) {
     metaballs.push({
       x: Math.random() * width,
       y: Math.random() * height,
       r: 20 + Math.random() * 40,
-      vx: (Math.random() - 0.5) * 0.5,
-      vy: (Math.random() - 0.5) * 0.5
+      vx: (Math.random() - 0.5) * 0.4,
+      vy: (Math.random() - 0.5) * 0.4
     });
   }
 
@@ -154,7 +165,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
   function animate(t) {
     const time = t * 0.005;
-
     const isDarkMode = detectDarkMode();
 
     metaballs.forEach(ball => {
@@ -183,16 +193,15 @@ window.addEventListener("DOMContentLoaded", () => {
 
         if (sum > threshold) {
           const alpha = Math.min(255 * Math.tanh(sum - threshold), 180);
+          let rgb;
 
-        let rgb;
-        if (isDarkMode) {
- 
-        const pulse = 0.3 + 0.05 * Math.sin(time + x * 0.01 + y * 0.01);
-        rgb = hslToRgb(270 / 360, 0.8, pulse);
+          if (isDarkMode) {
+            const pulse = 0.3 + 0.05 * Math.sin(time + x * 0.01 + y * 0.01);
+            rgb = hslToRgb(330 / 360, 0.8, pulse); 
           } else {
-        const hue = (time * 10 + x * 0.05 + y * 0.05) % 360;
-        rgb = hslToRgb(hue / 360, 1, 0.5);
-}
+            const hue = (time * 10 + x * 0.05 + y * 0.05) % 360;
+            rgb = hslToRgb(hue / 360, 1, 0.5);
+          }
 
           data[i]     = rgb[0];
           data[i + 1] = rgb[1];
@@ -209,16 +218,15 @@ window.addEventListener("DOMContentLoaded", () => {
     ctx.clearRect(0, 0, width, height);
     ctx.globalAlpha = 0.9;
     ctx.imageSmoothingEnabled = true;
-    ctx.imageSmoothingQuality = 'normal';
+    ctx.imageSmoothingQuality = 'high';
     ctx.filter = 'blur(5px)';
     ctx.drawImage(fieldCanvas, 0, 0, width, height);
-    ctx.filter =  'brightness(1.2)';
+    ctx.filter = 'brightness(1.2)';
     ctx.globalAlpha = 1;
 
     requestAnimationFrame(animate);
   }
 
-  // HSL → RGB
   function hslToRgb(h, s, l) {
     let r, g, b;
     if (s === 0) {
@@ -242,8 +250,8 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   animate();
-
 });
+
 
 document.addEventListener('DOMContentLoaded', () => {
   const nav = document.querySelector('.navigation');
@@ -305,3 +313,26 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const isMobile = () => window.innerWidth < 768
+  if (isMobile()) {
+
+    document.querySelectorAll('.info-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const slide = btn.parentElement;
+        const text = slide.querySelector('.text');
+        const isVisible = text.style.display === 'block'
+
+        document.querySelectorAll('.slide .text').forEach(el => el.style.display = 'none')
+
+        text.style.display = isVisible ? 'none' : 'block';
+      });
+    });
+  } else {
+
+    document.querySelectorAll('.slide .text').forEach(el => {
+      el.style.display = 'block';
+    });
+  }
+})

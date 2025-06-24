@@ -5,10 +5,11 @@
 
   toggle.addEventListener("click", () => {
     if (!isVisible) {
-
+    
       menu.classList.remove("fade-out");
       menu.style.display = "flex";
       void menu.offsetWidth;
+
       menu.classList.add("fade-in");
       isVisible = true;
     } else {
@@ -19,7 +20,7 @@
       setTimeout(() => {
         menu.style.display = "none";
         isVisible = false;
-      }, 500);
+      }, 500); 
     } 
 });
 
@@ -86,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
     wrapper.classList.remove('open');
   }, 1000);
 
-  // Toggle 
+  // Toggle manual
   button.addEventListener('click', () => {
     wrapper.classList.toggle('open');
   });
@@ -113,7 +114,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const fieldCtx = fieldCanvas.getContext('2d');
 
   let width, height, fieldWidth, fieldHeight;
-  const scale = window.innerWidth < 768 ? 0.12 : 0.2; 
+  const scale = window.innerWidth < 768 ? 0.12 : 0.2;
 
   function resize() {
     width = window.innerWidth;
@@ -144,14 +145,14 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   const metaballs = [];
-  const ballCount = window.innerWidth < 768 ? 30 : 55;
+  const ballCount = window.innerWidth < 768 ? 30 : 55; 
 
   for (let i = 0; i < ballCount; i++) {
     metaballs.push({
       x: Math.random() * width,
       y: Math.random() * height,
       r: 20 + Math.random() * 40,
-      vx: (Math.random() - 0.5) * 0.4,
+      vx: (Math.random() - 0.4) * 0.4,
       vy: (Math.random() - 0.5) * 0.4
     });
   }
@@ -197,7 +198,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
           if (isDarkMode) {
             const pulse = 0.3 + 0.05 * Math.sin(time + x * 0.01 + y * 0.01);
-            rgb = hslToRgb(330 / 360, 0.8, pulse); 
+            rgb = hslToRgb(280 / 360, 0.8, pulse);
           } else {
             const hue = (time * 10 + x * 0.05 + y * 0.05) % 360;
             rgb = hslToRgb(hue / 360, 1, 0.5);
@@ -252,7 +253,6 @@ window.addEventListener("DOMContentLoaded", () => {
   animate();
 });
 
-
 document.addEventListener('DOMContentLoaded', () => {
   const nav = document.querySelector('.navigation');
 
@@ -260,7 +260,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return window.innerWidth >= 768;
   }
 
-  let minimizedTimeout;
+  let minimizedTimeout = null;
 
   function minimizeNav() {
     nav.classList.remove('expanded');
@@ -274,42 +274,43 @@ document.addEventListener('DOMContentLoaded', () => {
 
   nav.classList.add('expanded');
 
-  window.addEventListener('scroll', () => {
-    if (!isDesktop()) {
-
-      nav.classList.remove('minimized', 'expanded');
-      nav.style = '';
-      return;
-    }
-
-    if (window.scrollY > 0) {
-
-      minimizeNav();
-    } else {
-
-      expandNav();
-    }
-  });
-
-
   nav.addEventListener('mouseenter', () => {
     if (!isDesktop()) return;
-    if (nav.classList.contains('minimized')) {
-      expandNav();
-
-      if (minimizedTimeout) clearTimeout(minimizedTimeout);
-    }
+    if (minimizedTimeout) clearTimeout(minimizedTimeout);
+    expandNav();
   });
 
   nav.addEventListener('mouseleave', () => {
     if (!isDesktop()) return;
-    if (nav.classList.contains('expanded')) {
 
-      minimizedTimeout = setTimeout(() => {
-        if (window.scrollY > 0) {
-          minimizeNav();
-        }
-      }, 4000);
+    minimizedTimeout = setTimeout(() => {
+      minimizeNav();
+    }, 1200);
+  });
+
+  nav.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      if (!isDesktop()) return;
+
+      e.preventDefault();
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+
+        expandNav();
+      }
+    });
+  });
+
+  window.addEventListener('resize', () => {
+    if (!isDesktop()) {
+      nav.classList.remove('minimized', 'expanded');
+      nav.style = '';
+    } else {
+      expandNav();
     }
   });
 });
@@ -330,9 +331,23 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   } else {
-
+  
     document.querySelectorAll('.slide .text').forEach(el => {
       el.style.display = 'block';
     });
   }
 })
+
+// fade in
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      } else {
+        entry.target.classList.remove('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+

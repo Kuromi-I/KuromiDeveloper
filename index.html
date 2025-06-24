@@ -198,6 +198,18 @@
     <canvas id="mainCanvas"></canvas>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js" defer></script> 
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js" defer></script>
-  <script src="script.js" defer></script>
+    <script src="script.js" defer></script>
+    <script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('service-worker.js')
+      .then(function(reg) {
+        console.log('Service Worker registrado!', reg);
+      })
+      .catch(function(erro) {
+        console.log('Erro ao registrar o Service Worker', erro);
+      });
+  }
+</script>
+
 </body>
 </html>

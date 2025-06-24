@@ -315,28 +315,43 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+// Slide Info
 document.addEventListener('DOMContentLoaded', () => {
-  const isMobile = () => window.innerWidth < 768
-  if (isMobile()) {
+  const width = window.innerWidth;
+
+  if (width <= 480) {
 
     document.querySelectorAll('.info-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         const slide = btn.parentElement;
         const text = slide.querySelector('.text');
-        const isVisible = text.style.display === 'block'
+        const isVisible = text.style.display === 'block';
 
-        document.querySelectorAll('.slide .text').forEach(el => el.style.display = 'none')
+        document.querySelectorAll('.slide .text').forEach(el => el.style.display = 'none');
+
+        text.style.display = isVisible ? 'none' : 'block';
+      });
+    });
+  } else if (width < 768) {
+    
+    document.querySelectorAll('.info-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const slide = btn.parentElement;
+        const text = slide.querySelector('.text');
+        const isVisible = text.style.display === 'block';
+
+        document.querySelectorAll('.slide .text').forEach(el => el.style.display = 'none');
 
         text.style.display = isVisible ? 'none' : 'block';
       });
     });
   } else {
-  
+    
     document.querySelectorAll('.slide .text').forEach(el => {
       el.style.display = 'block';
     });
   }
-})
+});
 
 // fade in
   const observer = new IntersectionObserver(entries => {

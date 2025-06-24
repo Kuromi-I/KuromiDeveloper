@@ -1,5 +1,5 @@
 {
-  "name": "Minha Página Offline",
+  "name": "My Offline Page",
   "short_name": "OfflinePage",
   "start_url": "/index.html",
   "display": "standalone",

@@ -8,6 +8,7 @@ self.addEventListener('install', function(event) {
         '/script.js',
         '/gato.png',
         '/sentado.png'
+        '/offline.html',
       ]);
     })
   );

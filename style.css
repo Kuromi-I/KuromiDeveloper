@@ -127,7 +127,7 @@ body, a{
   
    h3 {
     font-size: 1.1em;
-    width: 50%;
+    width: 90%;
   }
 
   .navigation a {
@@ -165,7 +165,6 @@ h1{
   margin: 0;
   padding: 0;
   color: #ffffff;
-  text-shadow: #f33669 0px 5px 5px;
 }
 h3{
   display: flex;
@@ -176,9 +175,17 @@ h3{
   margin: 0;
   padding: 0;
   color: #e887ef;
-  text-shadow: #f33669 0px 5px 5px;
 }
-
+.home-content span{
+  color: rgb(255, 138, 216);
+  letter-spacing: 5px;
+  padding: 5px 10px; 
+  margin: 10px;
+  background: rgb(37, 22, 64);
+  border-radius: 10px;
+  font-size: 2.5rem;
+  text-shadow: none;
+}
 .home-content {
   position: relative;
   z-index: 1;
@@ -198,7 +205,7 @@ h3{
   transition: color 0.3s ease-in-out;
 }
 .social-icons a:hover {
-  color: #cb2877;
+  color: #f04497;
 }
 /* portfolio */
 
@@ -445,7 +452,7 @@ ion-icon {
   border-radius: 10%;
   z-index: 1;
   opacity: 0;
-  transform: translateX(50%);
+  transform: translateX(20%);
   transition: transform 0.8s ease, opacity 0.8s ease;
   pointer-events: none;
   background: radial-gradient(circle at right, rgba(3, 3, 3, 1), transparent);
@@ -471,7 +478,7 @@ ion-icon {
   transition: background 0.3s;
   position: absolute;
   right: 35%;
-  top: 35%
+  bottom: 5%;
 }
 
 .btn-show:hover {
@@ -482,26 +489,47 @@ ion-icon {
   display: none;
   position: absolute;
   top: 40px;
-  left: 60px;
+  left:100px;
   font-size: 32px;
   color: white;
   cursor: pointer;
   z-index: 2;
 }
 
-.text h1, .tx{
+.text h1{
+  font-size: 2em;
+  font-weight: bold;
+  color: var(--text-color);
+  text-shadow: None;
+  position: relative;
+  margin-left: 65%;
+  width: 50%;
+  top:-100px;
+  letter-spacing: 5px;
+  display:block;
+}
+.text span {
+  opacity: 0;
+  display:block;
+}
+
+.tx {
+  display:block;
   font-size: 1.2em;
   color: var(--text-color);
   text-shadow: None;
-  position: absolute;
-  top: 30%;
-  padding: 0 100px;
-}
+  position: relative;
+  padding: 10px 100px;
+  margin-left: 50%;
+  letter-spacing: 5px;
+  top:-100px;
+ }
+
 .about-img {
   position: absolute;
   left: 10%;
   top: 25px;
-  width: 40%;
+  width: 40%; 
 }
 .about-img img {
   width: 100%;
@@ -518,6 +546,60 @@ ion-icon {
   50% { transform: translateX(3px); }
   75% { transform: translateX(-3px); }
   100% { transform: translateY(0); }
+}
+@media screen and (max-width: 700px) {
+  #about {
+    flex-direction: column;
+    padding: 40px 10px;
+    min-height: auto;
+  }
+
+  .about-img {
+    position: relative;
+    width: 70%;
+    left: 0;
+    margin: 0 auto 20px auto;
+    top: 0;
+  }
+
+  .about-text {
+    position: relative;
+    top: 0;
+    right: 0;
+    width: 95%;
+    max-width: none;
+    padding: 20px 20px;
+    transform: translateX(100%);
+    opacity: 0;
+    background: radial-gradient(circle at center, rgba(3, 3, 3, 1), transparent);
+    border-radius: 15px;
+  }
+
+  .about-text.active {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  .btn-show, #backBtn {
+    display: none !important;
+  }
+
+  .text h1 {
+    font-size: 1.5em;
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+    top: 0;
+    margin-bottom: 10px;
+  }
+
+  .tx {
+    margin: 0;
+    padding: 10px;
+    text-align: center;
+    top: 0;
+    font-size: 1em;
+  }
 }
 
 #skills{
@@ -538,7 +620,6 @@ ion-icon {
   margin: 0;
   padding: 0;
   color: #f6f3f7;
-  text-shadow: #9e3869 0px 10px 10px;
 }
 
 #contact{
@@ -559,8 +640,8 @@ ion-icon {
   margin: 0;
   padding: 0;
   color: #f4f3f5;
-  text-shadow: #9e3869 0px 10px 10px;
 }
+
 @keyframes slide-fade-in {
     from { 
         opacity: 0;

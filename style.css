@@ -481,8 +481,8 @@ ion-icon {
 #backBtn {
   display: none;
   position: absolute;
-  top: 50px;
-  left: 50px;
+  top: 40px;
+  left: 60px;
   font-size: 32px;
   color: white;
   cursor: pointer;

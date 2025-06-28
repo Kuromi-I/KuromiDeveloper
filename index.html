@@ -153,7 +153,7 @@
       <img src="../img/eu3.jpg" alt="Isadora">
     </div>
 <div class="text" id="texT" >
-  <h1>Click on About Me For More</h1>
+  <h1>Click on <span>About Me</span> For More</h1>
   <p class="tx">alguma coisa aqui ou não.</p>
 </div>
 <button class="btn-show" id="aboutBtn">About Me</button>
@@ -210,16 +210,5 @@
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js" defer></script> 
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js" defer></script>
   <script src="script.js" defer></script>
-    <script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('service-worker.js')
-      .then(function(reg) {
-        console.log('Service Worker registrado!', reg);
-      })
-      .catch(function(erro) {
-        console.log('Erro ao registrar o Service Worker', erro);
-      });
-  }
-</script>
 </body>
 </html>

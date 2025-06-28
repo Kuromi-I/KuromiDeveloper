@@ -126,7 +126,9 @@ body, a{
   }
   
    h3 {
-    width: 75%;  }
+    font-size: 1.1em;
+    width: 50%;
+  }
 
   .navigation a {
     flex-direction: column;
@@ -424,23 +426,98 @@ ion-icon {
   }
 }
 
-#about{
-  display: flex;
+#about {
   width: 100%;
-  height: 700px;
-  position: relative;
-  overflow: hidden;
-  border-radius: 10px;
-  align-items: center;
+  min-height: 700px;
+  display: flex;
   justify-content: center;
-  position: relative;
+  align-items: center;
+  padding: 20px 20px;
 }
-#about h1{
-  font-size: 2em;
-  margin: 0;
-  padding: 0;
-  color: #f4f0f6;
-  text-shadow: #9e3869 0px 10px 10px;
+.about-text {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  width: 80%;
+  max-width: 750px;
+  color: white;
+  padding: 0 50px;
+  border-radius: 10%;
+  z-index: 1;
+  opacity: 0;
+  transform: translateX(50%);
+  transition: transform 0.8s ease, opacity 0.8s ease;
+  pointer-events: none;
+  background: radial-gradient(circle at right, rgba(3, 3, 3, 1), transparent);
+
+}
+
+.about-text.active {
+  transform: translateX(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.btn-show {
+  display: block;
+  margin: 50px auto;
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #5e2ca5;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s;
+  position: absolute;
+  right: 35%;
+  top: 35%
+}
+
+.btn-show:hover {
+  background-color: #7b42e3;
+}
+
+#backBtn {
+  display: none;
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  font-size: 32px;
+  color: white;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.text h1, .tx{
+  font-size: 1.2em;
+  color: var(--text-color);
+  text-shadow: None;
+  position: absolute;
+  top: 30%;
+  padding: 0 100px;
+}
+.about-img {
+  position: absolute;
+  left: 10%;
+  top: 25px;
+  width: 40%; /* tamanho da imagem */
+}
+.about-img img {
+  width: 100%;
+  display: block;
+  height: auto;
+  filter: sepia(1) saturate(2.8) hue-rotate(215deg) brightness(0.8) contrast(1);
+  animation: wave 2s ease-in-out infinite;
+  border-radius: 50% 30% 30% 50% / 30% 50% 50% 30%;
+}
+
+@keyframes wave {
+  0% { transform: translateY(0); }
+  25% { transform: translateY(-3px); }
+  50% { transform: translateX(3px); }
+  75% { transform: translateX(-3px); }
+  100% { transform: translateY(0); }
 }
 
 #skills{
@@ -719,7 +796,7 @@ h1, h3 {
   text-shadow: var(--highlight) 0px 5px 5px;
 }
 
-#about, #skills, #contact, #port {
+#skills, #contact, #port {
   border: 1px solid var(--section-border);
   color: var(--text-color);
 }
@@ -955,10 +1032,10 @@ canvas {
 .fade-in {
   opacity: 0;
   transform: translateY(0px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
   will-change: opacity, transform;
 }
- .fade-in.visible {
+.fade-in.visible {
   opacity: 1;
   transform: translateY(0);
 }

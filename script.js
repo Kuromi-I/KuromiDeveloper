@@ -5,7 +5,6 @@
 
   toggle.addEventListener("click", () => {
     if (!isVisible) {
-    
       menu.classList.remove("fade-out");
       menu.style.display = "flex";
       void menu.offsetWidth;
@@ -315,46 +314,31 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// Slide Info
 document.addEventListener('DOMContentLoaded', () => {
-  const width = window.innerWidth;
-
-  if (width <= 480) {
+  const isMobile = () => window.innerWidth < 768
+  if (isMobile()) {
 
     document.querySelectorAll('.info-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         const slide = btn.parentElement;
         const text = slide.querySelector('.text');
-        const isVisible = text.style.display === 'block';
+        const isVisible = text.style.display === 'block'
 
-        document.querySelectorAll('.slide .text').forEach(el => el.style.display = 'none');
-
-        text.style.display = isVisible ? 'none' : 'block';
-      });
-    });
-  } else if (width < 768) {
-    
-    document.querySelectorAll('.info-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const slide = btn.parentElement;
-        const text = slide.querySelector('.text');
-        const isVisible = text.style.display === 'block';
-
-        document.querySelectorAll('.slide .text').forEach(el => el.style.display = 'none');
+        document.querySelectorAll('.slide .text').forEach(el => el.style.display = 'none')
 
         text.style.display = isVisible ? 'none' : 'block';
       });
     });
   } else {
-    
+  
     document.querySelectorAll('.slide .text').forEach(el => {
       el.style.display = 'block';
     });
   }
-});
+})
 
 // fade in
-  const observer = new IntersectionObserver(entries => {
+const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
@@ -364,5 +348,72 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }, { threshold: 0.1 });
 
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
+// decryption
+const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+';
+const paragraphs = document.querySelectorAll('#aboutText p');
+const aboutText = document.getElementById('aboutText');
+const showBtn = document.getElementById('aboutBtn');
+const backBtn = document.getElementById('backBtn');
+const texT = document.getElementById('texT');
+const intervals = new Map();
+
+function decryptParagraph(paragraph, speed = 90) {
+  const originalText = paragraph.getAttribute('data-original');
+  let revealedIndices = new Set();
+  let currentIndex = 0;
+
+  if (intervals.has(paragraph)) clearInterval(intervals.get(paragraph));
+
+  const shuffleText = () => {
+    return originalText.split('').map((char, i) => {
+      if (revealedIndices.has(i)) return char;
+      return characters[Math.floor(Math.random() * characters.length)];
+    }).join('');
+  };
+
+  const interval = setInterval(() => {
+    if (currentIndex < originalText.length) {
+      revealedIndices.add(currentIndex);
+      paragraph.innerText = shuffleText();
+      currentIndex++;
+    } else {
+      clearInterval(interval);
+      paragraph.innerText = originalText;
+      intervals.delete(paragraph);
+    }
+  }, speed);
+
+  intervals.set(paragraph, interval);
+}
+
+function showAboutText() {
+  aboutText.classList.add('active');
+  showBtn.style.display = 'none';
+  texT.style.display = 'none';
+  backBtn.style.display = 'inline';
+
+  paragraphs.forEach(p => {
+    p.innerText = '';
+    decryptParagraph(p, 20);
+  });
+}
+
+showBtn.addEventListener('click', showAboutText);
+
+backBtn.addEventListener('click', () => {
+  intervals.forEach(int => clearInterval(int));
+  intervals.clear();
+
+  aboutText.classList.remove('active');
+  showBtn.style.display = 'block';
+  texT.style.display = 'block'; 
+  backBtn.style.display = 'none';
+});
+
+window.onload = () => {
+  paragraphs.forEach(p => {
+    p.innerText = p.getAttribute('data-original');
+  });
+};

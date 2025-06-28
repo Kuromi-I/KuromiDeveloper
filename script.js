@@ -5,6 +5,7 @@
 
   toggle.addEventListener("click", () => {
     if (!isVisible) {
+      // Mostra com animação
       menu.classList.remove("fade-out");
       menu.style.display = "flex";
       void menu.offsetWidth;
@@ -252,6 +253,7 @@ window.addEventListener("DOMContentLoaded", () => {
   animate();
 });
 
+// JS para controlar o comportamento da nav
 document.addEventListener('DOMContentLoaded', () => {
   const nav = document.querySelector('.navigation');
 
@@ -314,6 +316,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+// JS para controlar o comportamento dos textos
 document.addEventListener('DOMContentLoaded', () => {
   const isMobile = () => window.innerWidth < 768
   if (isMobile()) {
@@ -396,7 +399,7 @@ function showAboutText() {
 
   paragraphs.forEach(p => {
     p.innerText = '';
-    decryptParagraph(p, 20);
+    decryptParagraph(p, 10);
   });
 }
 
@@ -417,3 +420,12 @@ window.onload = () => {
     p.innerText = p.getAttribute('data-original');
   });
 };
+
+// Mobile scroll detection 
+window.addEventListener('scroll', () => {
+  const isMobile = window.innerWidth <= 700;
+  const rect = aboutText.getBoundingClientRect();
+  if (isMobile && rect.top < window.innerHeight * 0.75 && !aboutText.classList.contains('active')) {
+    showAboutText();
+  }
+});

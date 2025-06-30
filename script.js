@@ -5,7 +5,7 @@
 
   toggle.addEventListener("click", () => {
     if (!isVisible) {
-      // Mostra com animação
+
       menu.classList.remove("fade-out");
       menu.style.display = "flex";
       void menu.offsetWidth;
@@ -253,7 +253,7 @@ window.addEventListener("DOMContentLoaded", () => {
   animate();
 });
 
-// JS para controlar o comportamento da nav
+// navbar animation
 document.addEventListener('DOMContentLoaded', () => {
   const nav = document.querySelector('.navigation');
 
@@ -316,29 +316,64 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// JS para controlar o comportamento dos textos
+// Slides
 document.addEventListener('DOMContentLoaded', () => {
-  const isMobile = () => window.innerWidth < 768
-  if (isMobile()) {
-
-    document.querySelectorAll('.info-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const slide = btn.parentElement;
-        const text = slide.querySelector('.text');
-        const isVisible = text.style.display === 'block'
-
-        document.querySelectorAll('.slide .text').forEach(el => el.style.display = 'none')
-
-        text.style.display = isVisible ? 'none' : 'block';
-      });
-    });
-  } else {
+  const isMobile = () => window.innerWidth < 768;
   
+
+  document.querySelectorAll('.info-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const slide = btn.parentElement;
+      const text = slide.querySelector('.text');
+      const isVisible = text.style.display === 'block';
+      document.querySelectorAll('.slide .text').forEach(el => el.style.display = 'none');
+      text.style.display = isVisible ? 'none' : 'block';
+    });
+  });
+
+  if (!isMobile()) {
     document.querySelectorAll('.slide .text').forEach(el => {
       el.style.display = 'block';
     });
   }
-})
+
+  const slider = document.querySelector('.slider');
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+  container.addEventListener('mousedown', (e) => {
+    isDown = true;
+    container.classList.add('active');
+    startX = e.pageX - container.offsetLeft;
+    scrollLeft = container.scrollLeft;
+  });
+  slider.addEventListener('mouseleave', () => {
+    isDown = false;
+    slider.classList.remove('active');
+  });
+  slider.addEventListener('mouseup', () => {
+    isDown = false;
+    slider.classList.remove('active');
+  });
+  slider.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - slider.offsetLeft;
+    const walk = (x - startX) * 1.5; 
+    slider.scrollLeft = scrollLeft - walk;
+  });
+
+  let startTouchX = 0;
+  slider.addEventListener('touchstart', (e) => {
+    startTouchX = e.touches[0].clientX;
+    scrollLeft = slider.scrollLeft;
+  });
+  slider.addEventListener('touchmove', (e) => {
+    const moveX = e.touches[0].clientX;
+    const diff = startTouchX - moveX;
+    slider.scrollLeft = scrollLeft + diff;
+  });
+});
 
 // fade in
 const observer = new IntersectionObserver(entries => {
@@ -362,25 +397,22 @@ const backBtn = document.getElementById('backBtn');
 const texT = document.getElementById('texT');
 const intervals = new Map();
 
-function decryptParagraph(paragraph, speed = 90) {
+function decryptParagraph(paragraph, speed = 80) {
   const originalText = paragraph.getAttribute('data-original');
-  let revealedIndices = new Set();
-  let currentIndex = 0;
+  let index = 0;
 
   if (intervals.has(paragraph)) clearInterval(intervals.get(paragraph));
 
-  const shuffleText = () => {
-    return originalText.split('').map((char, i) => {
-      if (revealedIndices.has(i)) return char;
-      return characters[Math.floor(Math.random() * characters.length)];
-    }).join('');
-  };
-
   const interval = setInterval(() => {
-    if (currentIndex < originalText.length) {
-      revealedIndices.add(currentIndex);
-      paragraph.innerText = shuffleText();
-      currentIndex++;
+    if (index <= originalText.length) {
+      const revealed = originalText.slice(0, index);
+      const randoms = originalText
+        .slice(index)
+        .split('')
+        .map(() => characters[Math.floor(Math.random() * characters.length)])
+        .join('');
+      paragraph.innerText = revealed + randoms;
+      index++;
     } else {
       clearInterval(interval);
       paragraph.innerText = originalText;
@@ -398,8 +430,14 @@ function showAboutText() {
   backBtn.style.display = 'inline';
 
   paragraphs.forEach(p => {
+
+    p.innerText = p.getAttribute('data-original');
+
+    const height = p.offsetHeight;
+    p.style.height = height + 'px';
+
     p.innerText = '';
-    decryptParagraph(p, 10);
+    decryptParagraph(p, 20);
   });
 }
 
@@ -413,6 +451,11 @@ backBtn.addEventListener('click', () => {
   showBtn.style.display = 'block';
   texT.style.display = 'block'; 
   backBtn.style.display = 'none';
+
+  paragraphs.forEach(p => {
+    p.innerText = p.getAttribute('data-original');
+    p.style.height = '';
+  });
 });
 
 window.onload = () => {
@@ -421,11 +464,15 @@ window.onload = () => {
   });
 };
 
-// Mobile scroll detection 
+function isElementVisible(el) {
+  const rect = el.getBoundingClientRect();
+  return rect.top < window.innerHeight * 0.75;
+}
+
+// Mobile scroll detection
 window.addEventListener('scroll', () => {
   const isMobile = window.innerWidth <= 700;
-  const rect = aboutText.getBoundingClientRect();
-  if (isMobile && rect.top < window.innerHeight * 0.75 && !aboutText.classList.contains('active')) {
+  if (isMobile && isElementVisible(aboutText) && !aboutText.classList.contains('active')) {
     showAboutText();
   }
 });

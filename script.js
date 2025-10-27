@@ -5,7 +5,7 @@
 
   toggle.addEventListener("click", () => {
     if (!isVisible) {
-
+      
       menu.classList.remove("fade-out");
       menu.style.display = "flex";
       void menu.offsetWidth;
@@ -375,99 +375,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// fade in
-const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      } else {
-        entry.target.classList.remove('visible');
-      }
-    });
-  }, { threshold: 0.1 });
-
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-// decryption
-const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+';
-const paragraphs = document.querySelectorAll('#aboutText p');
-const aboutText = document.getElementById('aboutText');
-const showBtn = document.getElementById('aboutBtn');
-const backBtn = document.getElementById('backBtn');
-const texT = document.getElementById('texT');
-const intervals = new Map();
-
-function decryptParagraph(paragraph, speed = 80) {
-  const originalText = paragraph.getAttribute('data-original');
-  let index = 0;
-
-  if (intervals.has(paragraph)) clearInterval(intervals.get(paragraph));
-
-  const interval = setInterval(() => {
-    if (index <= originalText.length) {
-      const revealed = originalText.slice(0, index);
-      const randoms = originalText
-        .slice(index)
-        .split('')
-        .map(() => characters[Math.floor(Math.random() * characters.length)])
-        .join('');
-      paragraph.innerText = revealed + randoms;
-      index++;
-    } else {
-      clearInterval(interval);
-      paragraph.innerText = originalText;
-      intervals.delete(paragraph);
-    }
-  }, speed);
-
-  intervals.set(paragraph, interval);
-}
-
-function showAboutText() {
-  aboutText.classList.add('active');
-  showBtn.style.display = 'none';
-  texT.style.display = 'none';
-  backBtn.style.display = 'inline';
-
-  paragraphs.forEach(p => {
-
-    p.innerText = p.getAttribute('data-original');
-
-    const height = p.offsetHeight;
-    p.style.height = height + 'px';
-
-    p.innerText = '';
-    decryptParagraph(p, 20);
-  });
-}
-
-showBtn.addEventListener('click', showAboutText);
-
-backBtn.addEventListener('click', () => {
-  intervals.forEach(int => clearInterval(int));
-  intervals.clear();
-
-  aboutText.classList.remove('active');
-  showBtn.style.display = 'block';
-  texT.style.display = 'block'; 
-  backBtn.style.display = 'none';
-
-  paragraphs.forEach(p => {
-    p.innerText = p.getAttribute('data-original');
-    p.style.height = '';
-  });
-});
-
-window.onload = () => {
-  paragraphs.forEach(p => {
-    p.innerText = p.getAttribute('data-original');
-  });
-};
-
-function isElementVisible(el) {
-  const rect = el.getBoundingClientRect();
-  return rect.top < window.innerHeight * 0.75;
-}
 
 // Mobile scroll detection
 window.addEventListener('scroll', () => {

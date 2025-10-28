@@ -318,48 +318,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Slides
 document.addEventListener('DOMContentLoaded', () => {
-  const isMobile = () => window.innerWidth < 768;
-  
-
-  document.querySelectorAll('.info-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const slide = btn.parentElement;
-      const text = slide.querySelector('.text');
-      const isVisible = text.style.display === 'block';
-      document.querySelectorAll('.slide .text').forEach(el => el.style.display = 'none');
-      text.style.display = isVisible ? 'none' : 'block';
-    });
-  });
-
-  if (!isMobile()) {
-    document.querySelectorAll('.slide .text').forEach(el => {
-      el.style.display = 'block';
-    });
-  }
-
-  const slider = document.querySelector('.slider');
+  const slider = document.querySelector('#slides .inner');
   let isDown = false;
   let startX;
   let scrollLeft;
-  container.addEventListener('mousedown', (e) => {
+
+
+  slider.addEventListener('mousedown', (e) => {
     isDown = true;
-    container.classList.add('active');
-    startX = e.pageX - container.offsetLeft;
-    scrollLeft = container.scrollLeft;
+    startX = e.pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
+    slider.style.cursor = 'grabbing';
   });
+
   slider.addEventListener('mouseleave', () => {
     isDown = false;
-    slider.classList.remove('active');
+    slider.style.cursor = 'grab';
   });
+
   slider.addEventListener('mouseup', () => {
     isDown = false;
-    slider.classList.remove('active');
+    slider.style.cursor = 'grab';
   });
+
   slider.addEventListener('mousemove', (e) => {
     if (!isDown) return;
     e.preventDefault();
     const x = e.pageX - slider.offsetLeft;
-    const walk = (x - startX) * 1.5; 
+    const walk = (x - startX) * 1.5;
+
     slider.scrollLeft = scrollLeft - walk;
   });
 
@@ -368,6 +355,7 @@ document.addEventListener('DOMContentLoaded', () => {
     startTouchX = e.touches[0].clientX;
     scrollLeft = slider.scrollLeft;
   });
+
   slider.addEventListener('touchmove', (e) => {
     const moveX = e.touches[0].clientX;
     const diff = startTouchX - moveX;
@@ -383,3 +371,4 @@ window.addEventListener('scroll', () => {
     showAboutText();
   }
 });
+

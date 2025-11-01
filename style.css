@@ -15,9 +15,6 @@
   overflow-x: hidden;
   scroll-behavior: smooth;
 }
-body, a{
-  cursor: url(https://cur.cursors-4u.net/anime/ani-1/ani197.ani), url(https://cur.cursors-4u.net/anime/ani-1/ani197.png), auto;
-}
 .navigation.hide {
   opacity: 0;
 }
@@ -976,4 +973,5 @@ canvas {
     display: flex;
   }
 }
+
 

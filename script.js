@@ -316,54 +316,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// Slides
-document.addEventListener('DOMContentLoaded', () => {
-  const slider = document.querySelector('#slides .inner');
-  let isDown = false;
-  let startX;
-  let scrollLeft;
-
-
-  slider.addEventListener('mousedown', (e) => {
-    isDown = true;
-    startX = e.pageX - slider.offsetLeft;
-    scrollLeft = slider.scrollLeft;
-    slider.style.cursor = 'grabbing';
-  });
-
-  slider.addEventListener('mouseleave', () => {
-    isDown = false;
-    slider.style.cursor = 'grab';
-  });
-
-  slider.addEventListener('mouseup', () => {
-    isDown = false;
-    slider.style.cursor = 'grab';
-  });
-
-  slider.addEventListener('mousemove', (e) => {
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - slider.offsetLeft;
-    const walk = (x - startX) * 1.5;
-
-    slider.scrollLeft = scrollLeft - walk;
-  });
-
-  let startTouchX = 0;
-  slider.addEventListener('touchstart', (e) => {
-    startTouchX = e.touches[0].clientX;
-    scrollLeft = slider.scrollLeft;
-  });
-
-  slider.addEventListener('touchmove', (e) => {
-    const moveX = e.touches[0].clientX;
-    const diff = startTouchX - moveX;
-    slider.scrollLeft = scrollLeft + diff;
-  });
-});
-
-
 // Mobile scroll detection
 window.addEventListener('scroll', () => {
   const isMobile = window.innerWidth <= 700;
@@ -372,3 +324,22 @@ window.addEventListener('scroll', () => {
   }
 });
 
+// fade-in
+
+document.addEventListener("DOMContentLoaded", () => {
+  const fadeElements = document.querySelectorAll('.fade-in');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        
+        entry.target.classList.add('visible');
+      } else {
+        
+        entry.target.classList.remove('visible');
+      }
+    });
+  }, { threshold: 0.2 });
+
+  fadeElements.forEach(el => observer.observe(el));
+});

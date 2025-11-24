@@ -562,6 +562,7 @@ ion-icon {
 .line textarea{
   height: 120px;
   padding: 20px;
+  border-radius: 10px;
 }
 
 .line button{
@@ -1070,3 +1071,4 @@ canvas {
   opacity: 1;
   transform: translateY(0);
 }
+

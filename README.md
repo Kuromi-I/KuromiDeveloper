@@ -8,7 +8,7 @@ I started working in front-end at the age of 17, but I had to take a break due t
 
 📹 I used to be a video editor and dreamed of being a YouTuber.
 
-🐰 I use the nickname **Kuromi** because I'm a fan of the Hello Kitty character.
+🐰 I use the nickname **Kuromi** because I'm a fan of the Hello Kitty character cartoon.
 
 If you want to follow my progress, feel free to explore my projects here on GitHub.
 

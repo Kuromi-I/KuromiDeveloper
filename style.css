@@ -521,22 +521,73 @@ ion-icon {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  color: #f0edf2;
   text-align: center;
+  font-size: 1.5rem;
 }
 
 .contact-content{
-  border: #000000 1px solid;
+  border: #f7f3f3 1px solid;
   display: block;
   padding: 10px;
   margin: 10px;
-  border-radius: 10px;
-  background-color: rgba(0, 0, 0, 0.5);
-  width: 80%;
+  background-color: rgba(36, 36, 36, 0.7) ;
+  border-radius: 50px;
+  width: 30%;
   height: 80%;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.line {
+  display: flex;
+  position: relative;
+  align-items: start;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact-input{
+  width: 100%;
+  height: 50px;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  font-size: 500;
+  padding: 20px;
+  outline: none;
+  background: rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+  font-size: 1.2rem;
+
+}
+
+.line textarea{
+  height: 150px;
+  padding: 20px;
+}
+
+.line button{
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  margin: 10px;
+  font-size: 1.5rem;
+  gap: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50px;
+  background: var(--nav-bg);
+  color: white;
+  cursor: pointer;
+  height: 50px;
+}
+.line button ion-icon{
+  font-size: 30px;
+}
+
+.contact-input:focus{
+  border: 1px solid #ffffff;
+}
+.contact-input::placeholder{
+  color: rgb(255, 252, 252,0.5);
+}
 
 @keyframes slide-fade-in {
     from { 

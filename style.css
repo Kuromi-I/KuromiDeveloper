@@ -573,9 +573,8 @@ ion-icon {
   padding: 15px 20px;
   font-size: 1.5rem;
   position: relative;
-  bottom: 5px;
-  left: 20px;
-  gap: 10px;
+  left: 200px;
+  gap: 20px;
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 50px;
   background: var(--nav-bg);

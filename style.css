@@ -529,6 +529,7 @@ ion-icon {
 .contact-content{
   border: #f7f3f3 1px solid;
   display: block;
+  padding: 10px;
   background-color: rgba(36, 36, 36, 0.7) ;
   border-radius: 50px;
   width: 50%;
@@ -1083,5 +1084,3 @@ canvas {
   opacity: 1;
   transform: translateY(0);
 }
-
-

@@ -496,6 +496,7 @@ ion-icon {
   padding: 10 10 0 50;
   border: 1px solid #fff;
   border-radius: 10px;
+  cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .block:hover {
@@ -1083,3 +1084,4 @@ canvas {
   opacity: 1;
   transform: translateY(0);
 }
+

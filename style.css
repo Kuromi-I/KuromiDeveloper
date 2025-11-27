@@ -537,7 +537,10 @@ ion-icon {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   overflow: hidden;
 }
-
+.contact-content h2{
+  font-size: 2.5rem;
+  margin: 10px;
+}
 .line {
   display: flex;
   position: relative;
@@ -551,7 +554,7 @@ ion-icon {
   border-radius: 50px;
   border: 1px solid rgba(255, 255, 255, 0.5);
   font-size: 500;
-  padding: 20px;
+  padding: 15px;
   outline: none;
   background: rgba(0, 0, 0, 0.5);
   color: #ffffff;

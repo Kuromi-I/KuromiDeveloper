@@ -614,6 +614,10 @@ ion-icon {
   .line textarea {
     height: 150px;
   }
+  .line button{
+    position: relative;
+    left: 5px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

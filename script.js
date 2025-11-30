@@ -343,3 +343,38 @@ document.addEventListener("DOMContentLoaded", () => {
 
   fadeElements.forEach(el => observer.observe(el));
 });
+
+// Form Submission
+const form = document.querySelector("form[name='contact']");
+  const msgBox = document.getElementById("msg-box");
+  const msgText = document.getElementById("msg-text");
+  const msgIcon = document.querySelector(".msg-icon");
+  const msgClose = document.getElementById("msg-close");
+
+  function showMessage(text, success = true) {
+    msgText.textContent = text;
+    msgIcon.textContent = success ? "✔️" : "❌";
+    msgBox.classList.remove("hidden");
+  }
+
+  msgClose.addEventListener("click", () => {
+    msgBox.classList.add("hidden");
+  });
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const data = new FormData(form);
+
+    fetch("/", {
+      method: "POST",
+      body: data
+    })
+    .then(() => {
+      showMessage("Message sent successfully!", true);
+      form.reset();
+    })
+    .catch(() => {
+      showMessage("An error occurred. Please try again.", false);
+    });
+  });

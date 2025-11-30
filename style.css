@@ -620,6 +620,80 @@ ion-icon {
   }
 }
 
+/* msg box alert */
+.msg-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 10px; 
+}
+
+.msg-box.hidden {
+  display: none;
+}
+
+.msg-content {
+  background: #222;
+  padding: 20px;
+  border-radius: 20px;
+  width: 90%; 
+  max-width: 350px; 
+  text-align: center;
+  color: white;
+  animation: pop 0.3s ease;
+  border: 1px solid #444;
+}
+
+.msg-icon {
+  font-size: 40px; 
+  margin-bottom: 10px;
+  animation: bounce 0.5s ease;
+}
+
+#msg-close {
+  margin-top: 15px;
+  padding: 10px 15px;
+  background: var(--nav-bg);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  color: white;
+  font-size: 1rem;
+}
+
+#msg-close:hover {
+  opacity: 0.8;
+}
+
+@keyframes pop {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes bounce {
+  0% { transform: scale(0.5); }
+  60% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+@media (max-width: 360px) {
+  .msg-content {
+    padding: 15px;
+    border-radius: 15px;
+  }
+  .msg-icon {
+    font-size: 35px;
+  }
+}
+
+
 @media (prefers-reduced-motion: reduce) {
 .home-content {
     view-timeline-name: --fade-in;

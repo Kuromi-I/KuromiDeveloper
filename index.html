@@ -216,8 +216,7 @@
           <button type="submit" class="contact-button">Submit<ion-icon name="paper-plane-outline"></ion-icon></button>
         </form>
       </div>
-      </div>
-      
+            
       <div id="msg-box" class="msg-box hidden">
         <div class="msg-content">
           <div class="msg-icon">✔️</div>
@@ -225,9 +224,22 @@
           <button id="msg-close">OK</button>
         </div>
       </div>
-
     </section>
   </main>
+  
+      <div id="donate-hub" class="donate-hub hidden">
+        <div class="donate-box">
+          <button class="donate-minimize" id="donateMinimize">—</button>
+
+        <iframe src="https://caixinhadedoacao.vakinha.com.br/?campaignId=5893040&buttonColor=24ca68&headerColor=24ca68" style="width: 100%; height: 900px; border: unset"></iframe>
+        
+        </div>
+      </div>
+
+      <button id="donate-float" class="donate-float hidden">
+        💜 Donate
+      </button>
+
   <div class="dark-mode">
     <button class="toggle-darkmode" onclick="toggleDarkMode()">
       <ion-icon name="moon-outline"></ion-icon>
@@ -237,10 +249,10 @@
 
   <div class="casino-wrapper">
     <button class="casino-button" id="toggleButton">
-      <a href="../html/test.html" class="icon-link" onclick="event.stopPropagation()">
+      <a href="../games/casino.html" class="icon-link" onclick="event.stopPropagation()">
         <ion-icon name="game-controller-outline"></ion-icon>
       </a>
-      <a href="re.html" class="alert-icon">
+      <a href="../games/index.html" class="alert-icon">
         <ion-icon name="alert-circle-outline"></ion-icon>
       </a>
     </button>
@@ -250,6 +262,7 @@
       <ion-icon name="arrow-up-outline"></ion-icon>
     </a>
   </div>
+
 
   <canvas id="mainCanvas"></canvas>
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js" defer></script>

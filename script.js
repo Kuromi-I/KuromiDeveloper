@@ -378,3 +378,23 @@ const form = document.querySelector("form[name='contact']");
       showMessage("An error occurred. Please try again.", false);
     });
   });
+
+//Donate
+
+const donateHub = document.getElementById("donate-hub");
+const donateMinimize = document.getElementById("donateMinimize");
+const donateFloat = document.getElementById("donate-float");
+
+window.addEventListener("load", () => {
+  donateHub.classList.remove("hidden");
+});
+
+donateMinimize.addEventListener("click", () => {
+  donateHub.classList.add("hidden");
+  donateFloat.classList.remove("hidden");
+});
+
+donateFloat.addEventListener("click", () => {
+  donateHub.classList.remove("hidden");
+  donateFloat.classList.add("hidden");
+});

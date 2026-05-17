@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const closeButton = () => {
     toggleDarkModeBtn.style.opacity = '1';
-    toggleDarkModeBtn.style.transform = 'translateX(32px)';
+    toggleDarkModeBtn.style.transform = 'translateX(40px)';
   };
 
 
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
     wrapper.classList.remove('open');
   }, 1000);
 
-  // Toggle manual
+// Toggle manual
   button.addEventListener('click', () => {
     wrapper.classList.toggle('open');
   });
@@ -145,13 +145,13 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   const metaballs = [];
-  const ballCount = window.innerWidth < 768 ? 30 : 55; 
+  const ballCount = window.innerWidth < 768 ? 15: 30; 
 
   for (let i = 0; i < ballCount; i++) {
     metaballs.push({
       x: Math.random() * width,
       y: Math.random() * height,
-      r: 20 + Math.random() * 40,
+      r: 20 + Math.random() * 80,
       vx: (Math.random() - 0.4) * 0.4,
       vy: (Math.random() - 0.5) * 0.4
     });
@@ -296,12 +296,12 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const target = document.querySelector(link.getAttribute('href'));
       if (target) {
+        expandNav();
+
         target.scrollIntoView({
           behavior: 'smooth',
           block: 'start'
         });
-
-        expandNav();
       }
     });
   });
@@ -323,8 +323,6 @@ window.addEventListener('scroll', () => {
     showAboutText();
   }
 });
-
-// fade-in
 
 document.addEventListener("DOMContentLoaded", () => {
   const fadeElements = document.querySelectorAll('.fade-in');

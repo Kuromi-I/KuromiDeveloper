@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Monsieur+La+Doulaise&family=Oi&family=Press+Start+2P&family=Silkscreen:wght@400;700&display=swap');
 *{
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
@@ -117,6 +118,10 @@
   text-shadow: #000000 0px  10px 5px;
     
 }
+.text, p{
+  text-align: justify;
+}
+
 @media (max-width: 480px) {
   h1 {
     font-size: 1.5em;
@@ -206,7 +211,6 @@ h3{
 .social-icons a:hover {
   color: #f04497;
 }
-/* portfolio */
 
 .slide .text {
   display: block;
@@ -421,12 +425,25 @@ ion-icon {
 
 .about-text{
   position: absolute;
-  right: 20px;
-  width: 60%;
-  color: white;
+  right: 50px;
+  width: 50%;
+  color: rgb(245, 118, 245);
   text-align: justify;
+  display: flex;
+  flex-direction: column;
+  }
+.text-about{
+  font-size: 1.2rem;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
 }
-
+.title-about{
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+.text-about, .title-about{
+  font-family: "Silkscreen", sans-serif;
+}
 .about-img {
   position: absolute;
   left: 45px;
@@ -1098,7 +1115,7 @@ canvas {
   padding: 0 ;
   position: fixed;
   top: 5px;
-  right: 20px;
+  right: 10px;
   left: auto ;
   transform: translate(0, 0);
   background: var(--nav-bg);

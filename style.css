@@ -511,7 +511,7 @@ ion-icon {
 
 .block {
   max-width: 400px;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(0, 0, 0, 0.09);
   padding: 10 10 0 50;
   border: 1px solid #fff;
   border-radius: 10px;
@@ -648,7 +648,11 @@ ion-icon {
   margin: 0 auto;
 }
 }
-
+#msg-text{
+  display: flex;
+  text-align: center;
+  font-size: 2rem;
+}
 .msg-box {
   position: fixed;
   top: 0;

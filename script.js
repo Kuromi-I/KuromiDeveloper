@@ -1,33 +1,30 @@
-  const toggle = document.querySelector(".menu-toggle");
-  const menu = document.querySelector(".menu");
+const toggle = document.querySelector(".menu-toggle");
+const menu = document.querySelector(".menu");
 
-  let isVisible = false;
+let isVisible = false;
 
-  toggle.addEventListener("click", () => {
-    if (!isVisible) {
-      
-      menu.classList.remove("fade-out");
-      menu.style.display = "flex";
-      void menu.offsetWidth;
+toggle.addEventListener("click", () => {
+  if (!isVisible) {
+    menu.classList.remove("fade-out");
+    menu.style.display = "flex";
+    void menu.offsetWidth;
 
-      menu.classList.add("fade-in");
-      isVisible = true;
-    } else {
+    menu.classList.add("fade-in");
+    isVisible = true;
+  } else {
+    menu.classList.remove("fade-in");
+    menu.classList.add("fade-out");
 
-      menu.classList.remove("fade-in");
-      menu.classList.add("fade-out");
-
-      setTimeout(() => {
-        menu.style.display = "none";
-        isVisible = false;
-      }, 500); 
-    } 
+    setTimeout(() => {
+      menu.style.display = "none";
+      isVisible = false;
+    }, 500); 
+  } 
 });
 
 // Dark Mode
 document.addEventListener('DOMContentLoaded', () => {
   const toggleDarkModeBtn = document.querySelector('.toggle-darkmode');
-
 
   const enableDarkMode = () => {
     document.body.classList.add('dark-mode');
@@ -39,12 +36,10 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem('dark-mode', null);
   };
 
-
   let darkmode = localStorage.getItem('dark-mode');
   if (darkmode === "active") {
     enableDarkMode();
   }
-
 
   const openButton = () => {
     toggleDarkModeBtn.style.opacity = '1';
@@ -56,21 +51,14 @@ document.addEventListener('DOMContentLoaded', () => {
     toggleDarkModeBtn.style.transform = 'translateX(40px)';
   };
 
-
   openButton();
-
-  
   let closeTimeout = setTimeout(closeButton, 2000);
-
 
   toggleDarkModeBtn.addEventListener('click', () => {
     darkmode = localStorage.getItem('dark-mode');
     darkmode !== "active" ? enableDarkMode() : disableDarkMode();
 
-
     openButton();
-
-
     clearTimeout(closeTimeout);
     closeTimeout = setTimeout(closeButton, 2000);
   });
@@ -81,16 +69,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const wrapper = document.querySelector('.casino-wrapper');
   const button = document.getElementById('toggleButton');
 
-  wrapper.classList.add('open');
+  if(wrapper) {
+    wrapper.classList.add('open');
+    setTimeout(() => {
+      wrapper.classList.remove('open');
+    }, 1000);
+  }
 
-  setTimeout(() => {
-    wrapper.classList.remove('open');
-  }, 1000);
-
-// Toggle manual
-  button.addEventListener('click', () => {
-    wrapper.classList.toggle('open');
-  });
+  if(button && wrapper) {
+    button.addEventListener('click', () => {
+      wrapper.classList.toggle('open');
+    });
+  }
 });
 
 // back to top
@@ -98,18 +88,21 @@ document.addEventListener('scroll', () => {
   const backToTop = document.querySelector('.back-to-top');
   const homeSection = document.querySelector('#home');
   
-  if (window.scrollY > homeSection.offsetHeight) {
-    backToTop.style.display = 'flex';
-  } else {
-    backToTop.style.display = 'none';
+  if (backToTop && homeSection) {
+    if (window.scrollY > homeSection.offsetHeight) {
+      backToTop.style.display = 'flex';
+    } else {
+      backToTop.style.display = 'none';
+    }
   }
 });
 
-//  Bubbles
+// Bubbles
 window.addEventListener("DOMContentLoaded", () => {
   const canvas = document.getElementById('mainCanvas');
+  if (!canvas) return;
+  
   const ctx = canvas.getContext('2d');
-
   const fieldCanvas = document.createElement('canvas');
   const fieldCtx = fieldCanvas.getContext('2d');
 
@@ -117,8 +110,9 @@ window.addEventListener("DOMContentLoaded", () => {
   const scale = window.innerWidth < 768 ? 0.12 : 0.2;
 
   function resize() {
-    width = window.innerWidth;
-    height = window.innerHeight;
+    
+    width = document.documentElement.clientWidth;
+    height = document.documentElement.clientHeight;
 
     fieldWidth = Math.floor(width * scale);
     fieldHeight = Math.floor(height * scale);
@@ -145,7 +139,7 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   const metaballs = [];
-  const ballCount = window.innerWidth < 768 ? 15: 30; 
+  const ballCount = window.innerWidth < 768 ? 15 : 30; 
 
   for (let i = 0; i < ballCount; i++) {
     metaballs.push({
@@ -256,6 +250,7 @@ window.addEventListener("DOMContentLoaded", () => {
 // navbar animation
 document.addEventListener('DOMContentLoaded', () => {
   const nav = document.querySelector('.navigation');
+  if(!nav) return;
 
   function isDesktop() {
     return window.innerWidth >= 768;
@@ -316,52 +311,46 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// Mobile scroll detection
-window.addEventListener('scroll', () => {
-  const isMobile = window.innerWidth <= 700;
-  if (isMobile && isElementVisible(aboutText) && !aboutText.classList.contains('active')) {
-    showAboutText();
-  }
-});
-
 document.addEventListener("DOMContentLoaded", () => {
   const fadeElements = document.querySelectorAll('.fade-in');
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        
         entry.target.classList.add('visible');
       } else {
-        
         entry.target.classList.remove('visible');
       }
     });
-  }, { threshold: 0.2 });
+  }, { threshold: 0.1 });
 
   fadeElements.forEach(el => observer.observe(el));
 });
 
 // Form Submission
 const form = document.querySelector("form[name='contact']");
-  const msgBox = document.getElementById("msg-box");
-  const msgText = document.getElementById("msg-text");
-  const msgIcon = document.querySelector(".msg-icon");
-  const msgClose = document.getElementById("msg-close");
+const msgBox = document.getElementById("msg-box");
+const msgText = document.getElementById("msg-text");
+const msgIcon = document.querySelector(".msg-icon");
+const msgClose = document.getElementById("msg-close");
 
-  function showMessage(text, success = true) {
+function showMessage(text, success = true) {
+  if(msgText && msgIcon && msgBox) {
     msgText.textContent = text;
     msgIcon.textContent = success ? "✔️" : "❌";
     msgBox.classList.remove("hidden");
   }
+}
 
+if(msgClose && msgBox) {
   msgClose.addEventListener("click", () => {
     msgBox.classList.add("hidden");
   });
+}
 
+if(form) {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-
     const data = new FormData(form);
 
     fetch("/", {
@@ -376,3 +365,4 @@ const form = document.querySelector("form[name='contact']");
       showMessage("An error occurred. Please try again.", false);
     });
   });
+}

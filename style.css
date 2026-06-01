@@ -213,9 +213,13 @@ h3{
 }
 
 .slide .text {
-  display: block;
+  display: none;
 }
 
+#video{
+  width: 100%;
+  height: auto;
+}
 
 @media (max-width: 768px) and (min-width: 480px) {
   .slide .text {
@@ -616,7 +620,7 @@ ion-icon {
   margin: 0 auto;
 }
 
-@media screen and (max-width: 1500px){
+@media screen and (max-width: 786px){
   #contact {
     display: flex;
     height: auto;
@@ -624,7 +628,7 @@ ion-icon {
   }
 
   .contact-content {
-    width: 50%;
+    width: 100%;
     height: auto;
     margin: 0 auto;
     padding: 20px;
@@ -1196,4 +1200,3 @@ canvas {
   opacity: 1;
   transform: translateY(0);
 }
-

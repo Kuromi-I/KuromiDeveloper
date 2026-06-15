@@ -537,120 +537,156 @@ ion-icon {
   object-fit: contain;
 }
 
-#contact{
+#contact {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   position: relative;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   text-align: center;
-  font-size: 1.5rem;
+  padding: 40px 20px;
 }
 
-.contact-content{
+.contact-content {
   border: #f7f3f3 1px solid;
   display: block;
-  padding: 10px;
-  background-color: rgba(36, 36, 36, 0.7) ;
+  padding: 30px; 
+  background-color: rgba(36, 36, 36, 0.7);
   border-radius: 50px;
-  width: 40%;
-  height: 90%;
+  width: 90%; 
+  max-width: 500px;
+  min-width: 280px; 
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  overflow: hidden;
 }
-.contact-content h2{
-  font-size: 2.5rem;
-  margin: 10px;
+
+.contact-content h2 {
+  font-size: 2rem;
+  margin: 10px 0 20px 0; 
 }
+
 .line {
   display: flex;
   position: relative;
+  top: 0; 
   flex-direction: column;
   gap: 15px;
 }
 
-.contact-input{
+.contact-input {
   width: 100%;
   border-radius: 50px;
   border: 1px solid rgba(255, 255, 255, 0.5);
-  font-size: 500;
-  padding: 15px;
+  font-weight: 500;
+  padding: 15px 20px;
   outline: none;
   background: rgba(0, 0, 0, 0.5);
   color: #ffffff;
-  font-size: 1.2rem;
+  font-size: 1rem;
+  box-sizing: border-box; 
 }
 
-.line textarea{
-  height: 150px;
-  padding: 20px;
-  resize: none;
+.line textarea {
+  height: 120px;
+  padding: 15px 20px;
+  resize: vertical;
+  font-family: inherit;
 }
 
-.line button{
+.line button {
   display: flex;
   align-items: center;
-  text-align: center;;
+  justify-content: center; 
+  text-align: center;
   padding: 15px 20px;
-  font-size: 1.5rem;
-  gap: 20px;
+  font-size: 1.2rem;
+  gap: 10px;
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 50px;
-  background: var(--nav-bg);
+  background: var(--nav-bg, #333); 
   color: white;
   cursor: pointer;
-  height: 50px;
-}
-.line button ion-icon{
-  font-size: 30px;
+  height: 55px;
+  width: auto; 
+  min-width: 150px;
+  margin: 0 auto;
+  transition: all 0.3s ease;
 }
 
-.contact-input:focus{
+.line button:hover {
+  transform: scale(1.02);
+  background: #444;
+}
+
+.line button ion-icon {
+  font-size: 24px;
+}
+
+.contact-input:focus {
   border: 1px solid #ffffff;
 }
-.contact-input::placeholder{
-  color: rgb(255, 252, 252,0.5);
+
+.contact-input::placeholder {
+  color: rgba(255, 252, 252, 0.5);
 }
-.contact-button{
+
+.contact-button {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 auto;
+  margin-top: 10px;
 }
 
-@media screen and (max-width: 798px) and (min-width: 300px){
+@media screen and (max-width: 798px) {
   #contact {
-    display: flex;
-    height: auto;
-    padding: 20px 0;
+    min-height: auto;
+    padding: 60px 20px;
   }
 
   .contact-content {
     width: 100%;
-    height: auto;
-    margin: 0 auto;
-    padding: 20px;
+    padding: 25px;
+    border-radius: 30px;
+  }
+
+  .contact-content h2 {
+    font-size: 1.8rem;
   }
 
   .contact-input {
-    height: 50px;
+    padding: 12px 18px;
+    font-size: 0.95rem;
   }
 
   .line textarea {
-    height: 150px;
+    height: 100px;
   }
-  .line button{
-    position: relative;
-    left: 5px;
+
+  .line button {
+    width: 100%;
+    max-width: 200px;
+    height: 50px;
+    font-size: 1rem;
   }
-  .contact-button{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
+  
+  .line button ion-icon {
+    font-size: 20px;
+  }
 }
+
+@media screen and (max-width: 480px) {
+  .contact-content {
+    padding: 20px;
+  }
+  
+  .contact-content h2 {
+    font-size: 1.5rem;
+  }
+  
+  .contact-input {
+    padding: 10px 15px;
+  }
 }
 #msg-text{
   display: flex;

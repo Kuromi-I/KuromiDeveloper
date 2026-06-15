@@ -213,7 +213,8 @@ h3{
 }
 
 .slide .text {
-  display: none;
+  display: block;
+  flex-direction: column;
 }
 
 #video{
@@ -221,11 +222,10 @@ h3{
   height: auto;
 }
 
-@media (max-width: 768px) and (min-width: 480px) {
+@media (max-width: 768px) and (min-width: 300px) {
   .slide .text {
-    display: block;               
+    display: none;             
   }
-
 }
 
 #port {
@@ -555,8 +555,8 @@ ion-icon {
   padding: 10px;
   background-color: rgba(36, 36, 36, 0.7) ;
   border-radius: 50px;
-  width: 30%;
-  height: 50%;
+  width: 40%;
+  height: 90%;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   overflow: hidden;
 }
@@ -620,7 +620,7 @@ ion-icon {
   margin: 0 auto;
 }
 
-@media screen and (max-width: 786px){
+@media screen and (max-width: 798px) and (min-width: 300px){
   #contact {
     display: flex;
     height: auto;

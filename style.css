@@ -451,16 +451,16 @@ ion-icon {
 }
 .about-img {
   position: absolute;
-  left: 45px;
-  width: 40%; 
+  left: 200px;
+  width: 40%;
 }
 .about-img img {
-  width: 100%;
+  width: 70%;
   display: block;
   height: auto;
-  filter: saturate(2) hue-rotate(150deg) brightness(0.9) contrast(1.1);
+  filter: drop-shadow(0 0 10px) grayscale(1) brightness(90%) contrast(140%) saturate(123%);
   animation: wave 2s ease-in-out infinite;
-  border-radius: 50% 30% 30% 50% / 30% 50% 50% 30%;
+  border-radius: 50% 40% 30% 50% / 0% 40% 0% 40%;
 }
 
 @keyframes wave {

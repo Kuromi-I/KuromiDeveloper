@@ -3,23 +3,30 @@ const menu = document.querySelector(".menu");
 
 let isVisible = false;
 
+function openMenu() {
+  menu.classList.remove("menu-out");
+  menu.style.display = "flex";
+  void menu.offsetWidth;
+  menu.classList.add("menu-in");
+  isVisible = true;
+}
+
+function closeMenu() {
+  if (!isVisible) return;
+  isVisible = false;
+  menu.classList.remove("menu-in");
+  menu.classList.add("menu-out");
+  setTimeout(() => {
+    if (!isVisible) menu.style.display = "none";
+  }, 300);
+}
+
 toggle.addEventListener("click", () => {
-  if (!isVisible) {
-    menu.classList.remove("fade-out");
-    menu.style.display = "flex";
-    void menu.offsetWidth;
+  isVisible ? closeMenu() : openMenu();
+});
 
-    menu.classList.add("fade-in");
-    isVisible = true;
-  } else {
-    menu.classList.remove("fade-in");
-    menu.classList.add("fade-out");
-
-    setTimeout(() => {
-      menu.style.display = "none";
-      isVisible = false;
-    }, 500); 
-  } 
+menu.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", closeMenu);
 });
 
 // Dark Mode
@@ -33,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const disableDarkMode = () => {
     document.body.classList.remove('dark-mode');
-    localStorage.setItem('dark-mode', null);
+    localStorage.removeItem('dark-mode');
   };
 
   let darkmode = localStorage.getItem('dark-mode');
@@ -134,8 +141,7 @@ window.addEventListener("DOMContentLoaded", () => {
   resize();
 
   function detectDarkMode() {
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark-mode)').matches;
-    return prefersDark || document.body.classList.contains('dark-mode');
+    return document.body.classList.contains('dark-mode');
   }
 
   const metaballs = [];
@@ -244,7 +250,7 @@ window.addEventListener("DOMContentLoaded", () => {
     return [r * 255, g * 255, b * 255];
   }
 
-  animate();
+  requestAnimationFrame(animate);
 });
 
 // navbar animation
@@ -253,7 +259,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if(!nav) return;
 
   function isDesktop() {
-    return window.innerWidth >= 768;
+    return window.innerWidth >= 801;
   }
 
   let minimizedTimeout = null;
@@ -304,7 +310,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('resize', () => {
     if (!isDesktop()) {
       nav.classList.remove('minimized', 'expanded');
-      nav.style = '';
+      nav.removeAttribute('style');
     } else {
       expandNav();
     }
@@ -351,13 +357,14 @@ if(msgClose && msgBox) {
 if(form) {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-    const data = new FormData(form);
 
     fetch("/", {
       method: "POST",
-      body: data
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(new FormData(form)).toString()
     })
-    .then(() => {
+    .then(res => {
+      if (!res.ok) throw new Error();
       showMessage("Message sent successfully!", true);
       form.reset();
     })

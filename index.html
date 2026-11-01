@@ -5,8 +5,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/x-icon" href="./visual-files/img/icon-kuromi.png">
+  <link rel="icon" type="image/png" href="./visual-files/img/icon-kuromi.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <title>Kuromi-Web</title>
 </head>
@@ -39,7 +42,7 @@
     </nav>
   </header>
 
-  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+  <div class="menu-toggle">☰</div>
   <div class="menu">
     <div class="menu-content">
       <a href="#home"><span class="icone" title="Home"><ion-icon name="home-outline"></ion-icon></span>
@@ -109,7 +112,7 @@ You might know me online as Kuromi — a little Hello Kitty-inspired twist to my
           <div id="overflow">
             <div class="inner">
               <div class="slide">
-                <video id="video" src="./visual-files/video/page.mp4" alt="page" controls>
+                <video class="video" src="./visual-files/video/page.mp4" controls>
                   Your browser does not support the video tag.
                 </video>
                 <div class="text">
@@ -119,30 +122,30 @@ You might know me online as Kuromi — a little Hello Kitty-inspired twist to my
                 </div>
               </div>
               <div class="slide">
-                <img src="./visual-files/img/invencivel.png" alt="page">
+                <video class="video" src="./visual-files/video/a.mp4" controls>
+                  Your browser does not support the video tag.
+                </video>
                 <div class="text">
-                  <h2>Lorem</h2>
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi veritatis enim officiis quibusdam at
-                    totam recusandae praesentium vero doloremque placeat quos sapiente molestiae, ratione impedit veniam
-                    blanditiis illum sequi ea.</p>
+                  <h2>Tutorial Video</h2>
+                  <p>
+                    The Web-sites mentioned in the video.
+                    <a class="link" href="https://fitgirl-repacks.site/" target="_blank"> Fitgirl-Repacks</a> |
+                    <a class="link" href="https://www.qbittorrent.org/download" target="_blank"> qbittorrent</a>
+                  </p>
                 </div>
               </div>
               <div class="slide">
                 <img src="./visual-files/img/supermanbatm.png" alt="page">
                 <div class="text">
-                  <h2>Lorem</h2>
-                  <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis ad nesciunt laboriosam! Facilis
-                    sequi architecto dolorem perspiciatis quas. Possimus aspernatur necessitatibus quaerat adipisci
-                    ratione dolor placeat id doloremque deleniti cum.</p>
+                  <h2>Soon</h2>
+                  <p>Coming soon...</p>
                 </div>
               </div>
               <div class="slide">
                 <img src="./visual-files/img/witch.png" alt="page">
                 <div class="text">
-                  <h2>Lorem</h2>
-                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint quod totam veritatis dolorum ut
-                    blanditiis perferendis explicabo rerum non sunt, unde praesentium labore, obcaecati quidem harum
-                    nemo placeat modi distinctio.</p>
+                  <h2>Soon</h2>
+                  <p>Coming soon...</p>
                 </div>
               </div>
             </div>
@@ -176,29 +179,20 @@ You might know me online as Kuromi — a little Hello Kitty-inspired twist to my
       <h1>My Skills</h1>
       <div class="skills-content">
         <div class="block">
-          <img src="" alt="photo">
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magnam veniam eos aliquid nemo voluptatem
-            temporibus necessitatibus? Vero pariatur quidem, iusto dolores amet, laboriosam placeat, quaerat expedita
-            aspernatur minima magni consectetur?</p>
+          <p>Coming soon...</p>
         </div>
         <div class="block">
-          <img src="" alt="photo">
-          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium nulla in recusandae, ducimus quia eius
-            atque id libero soluta vero, odit iusto mollitia. Dignissimos tempora quae inventore animi, quisquam eum?
-          </p>
+          <p>Coming soon...</p>
         </div>
         <div class="block">
-          <img src="" alt="photo">
-          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit, praesentium. Eos dolor aut
-            recusandae voluptas tempore, modi culpa quae quisquam rerum molestias alias amet fugit laborum molestiae
-            mollitia cupiditate eligendi?</p>
+          <p>Coming soon...</p>
         </div>
       </div>
     </section>
     <section id="contact" class="fade-in">
       <div class="contact-content">
         <h2>Contact Me</h2>
-        <form class="line" name="contact" method="POST" data-netlify="true">
+        <form class="line" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
           <input type="hidden" name="form-name" value="contact">
           <input type="hidden" name="bot-field">
           <input type="text" name="name" placeholder="Your Name" class="contact-input" required>
@@ -219,23 +213,12 @@ You might know me online as Kuromi — a little Hello Kitty-inspired twist to my
   </main>
   
   <div class="dark-mode">
-    <button class="toggle-darkmode" onclick="toggleDarkMode()">
+    <button class="toggle-darkmode">
       <ion-icon name="moon-outline"></ion-icon>
       <ion-icon name="sunny-outline"></ion-icon>
     </button>
   </div>
 
-  <div class="casino-wrapper">
-    <button class="casino-button" id="toggleButton">
-      <a href="../games/casino.html" class="icon-link" onclick="event.stopPropagation()">
-        <ion-icon name="game-controller-outline"></ion-icon>
-      </a>
-      <a href="../games/index.html" class="alert-icon">
-        <ion-icon name="alert-circle-outline"></ion-icon>
-      </a>
-    </button>
-  </div>
-  <div>
     <a href="#home" class="back-to-top" title="Voltar ao topo">
       <ion-icon name="arrow-up-outline"></ion-icon>
     </a>
